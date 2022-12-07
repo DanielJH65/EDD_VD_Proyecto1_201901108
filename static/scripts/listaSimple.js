@@ -15,7 +15,15 @@ export class listaSimple{
     insertarFinal(_dato){
         let newNodo = new NodoSimple(_dato)
         let tmp = this.first
-        this.first = newNodo
+        
+        if(this.first == null){
+            this.first = newNodo
+        }else{
+            while(tmp.next != null){
+                tmp = tmp.next
+            }
+            tmp.next = newNodo
+        }
     }
 
     imprimir(){
@@ -24,6 +32,17 @@ export class listaSimple{
             console.log(tmp.dato)
             tmp = tmp.next
         }
+    }
+
+    buscar(username, password, admin){
+        let tmp = this.first
+        while(tmp != null){
+            if(tmp.dato.username == username && tmp.dato.password == password && tmp.dato.admin == admin){
+                return tmp
+            }
+            tmp = tmp.next
+        }
+        return null
     }
 
 }

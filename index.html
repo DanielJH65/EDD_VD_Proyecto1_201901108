@@ -8,20 +8,80 @@
     <title>Login Muster Cloud</title>
 </head>
 <body>
-
-    <section class="bg-gray-800 min-h-screen flex items-center justify-center">
+    
+    <!-- #Login -->
+    <section class="bg-gray-800 min-h-screen flex items-center justify-center" id="login">
         <!-- Contenedor de login -->
-        <div class="bg-gray-500 flex rounded-2xl shadow-lg max-w-4xl p-5    ">
+        <div class="bg-gray-400 flex rounded-2xl shadow-lg max-w-4xl p-5    ">
             <!-- formulario -->
-                <div class="w-1/2">
-                    <h2 class="font-bold text32-l">Login</h2>
+                <div class="sm:w-1/2 px-16">
+                    <h2 class="font-bold text-2xl text-gray-800 py-6">Login</h2>
+                    <p class="text-sm text-gray-800">La mejor opción en música</p>
+
+                    <form class="flex flex-col gap-4" id="formLogin">
+                        <input class="p-5 mt-8 rounded-xl border" type="text" name="username" id="usernamelogin" placeholder="Username">
+                        <input class="p-5 rounded-xl border" type="password" name="password" id="passwordlogin" placeholder="Password">
+                        <table>
+                            <tr>
+                                <td><input class="p-2 rounded-xl border" type="checkbox" name="admin" id="adminlogin" placeholder="Administrador"><label for="admin" class="text-lg text-gray-800"> Administrador</label></td>
+                            </tr>
+                        </table>
+                        <button class="bg-sky-900 rounded-xl text-gray-200 py-4 hover:scale-110 duration-300" type="submit">Login</button>
+                    </form>
+
+                    <div class="mt-10 grid grid-cols-3 items-center text-gray-800">
+                        <hr class="border-gray-800">
+                        <p class="text-center text-sm">OR</p>
+                        <hr class="border-gray-800">
+                    </div>
+
+                    <div class="mt-5 text-md flex justify-between items-center text-gray-800">
+                        <p>No tienes una cuenta?</p>
+                        <button class="py-2 px-5 bg-sky-900 border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200" id="registroLogin">Registrar</button>
+                    </div>
                 </div>
             <!-- imagen -->
-                <div class="w-1/2">
+                <div class="sm:block hidden w-1/2">
                     <img class="rounded-2xl"src="http://getwallpapers.com/wallpaper/full/0/2/f/1116367-music-notes-background-1354x2342-for-pc.jpg"  alt="Logo">
                 </div>
         </div>
     </section>
+    <!-- #endLogin -->
+
+    <!-- #Register -->
+    <section class="bg-gray-800 min-h-screen hidden items-center justify-center" id="signin">
+        <!-- Contenedor de login -->
+        <div class="bg-gray-400 flex rounded-2xl shadow-lg max-w-4xl p-5    ">
+            <!-- formulario -->
+                <div class="sm:w-1/2 px-16">
+                    <h2 class="font-bold text-2xl text-gray-800 py-6">Sing in</h2>
+
+                    <form class="flex flex-col gap-4" id="formSignin">
+                        <input class="p-5 mt-2 rounded-xl border" type="text" name="username" id="usernamesignin" placeholder="Username">
+                        <input class="p-5 mt-2 rounded-xl border" type="text" name="name" id="namesignin" placeholder="Nombre Completo">
+                        <input class="p-5 mt-2 rounded-xl border" type="text" name="dpi" id="dpisignin" placeholder="DPI">
+                        <input class="p-5 mt-2 rounded-xl border" type="text" name="tel" id="telsignin" placeholder="Teléfono">
+                        <input class="p-5 mt-2 rounded-xl border" type="password" name="password" id="passwordsignin" placeholder="Password">
+                        
+                        <button class="bg-sky-900 rounded-xl text-gray-200 py-4 hover:scale-110 duration-300" type="submit">Sign in</button>
+                    </form>
+                    <div class="mt-5 text-md flex justify-between items-center text-gray-800">
+                        <button class="py-2 px-5 bg-sky-900 border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200" id="loginSignin">Volver al Log in</button>
+                    </div>
+                </div>
+            <!-- imagen -->
+                <div class="sm:block hidden w-1/2">
+                    <img class="rounded-2xl"src="http://getwallpapers.com/wallpaper/full/0/2/f/1116367-music-notes-background-1354x2342-for-pc.jpg"  alt="Logo">
+                </div>
+        </div>
+    </section>
+    <!-- #endRegister -->
+
+    <!-- #Admin -->
+    <section class="bg-gray-800 min-h-screen hidden items-center justify-center" id="login">
+        
+    </section>
+    <!-- #endAdmin -->
     
     <script src="./static/scripts/main.js" type="module"></script>
 </body>
