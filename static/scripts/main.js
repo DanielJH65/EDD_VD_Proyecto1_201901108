@@ -1,8 +1,11 @@
-import { listaSimple } from "./listaSimple.js"
+import { ListaSimple } from "./listaSimple.js"
 import { Usuario } from "./objetos.js"
 import "./js-sha256.js"
+import { Pila } from "./pila.js"
+import { Cola } from "./cola.js"
+import { ListaCircular } from "./listaCircular.js"
 
-let usuarios = new listaSimple()
+let usuarios = new ListaSimple()
 let usuarioActual
 
 usuarios.insertarFinal(new Usuario(2654568452521, "Oscar Armin", "EDD", sha256("123"), "+502 (123) 123-4567", true))
@@ -43,10 +46,10 @@ function login(e){
     if(usuarioActual != null){
         hiddeLogin()
     }else{
-        alert("Usurio o contraseña incorrectas")
+        Swal.fire('Oops...','Usuario o contraseña incorrectos','error')
     }
 
-    e.preventDefault();
+    e.preventDefault()
 
     username.value = ""
     password.value = ""
@@ -73,7 +76,7 @@ function signin(e){
 
     usuarios.insertarFinal(new Usuario(dpi.value, name.value, username.value, sha256(password.value), tel.value, false))
 
-    alert("Usurio Registrado")
+    Swal.fire('Perfecto...','Usuario registrado', 'success')
 
     e.preventDefault();
 

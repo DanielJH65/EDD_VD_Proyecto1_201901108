@@ -1,6 +1,6 @@
 import { NodoSimple } from "./nodoSimple.js"
 
-export class listaSimple{
+export class ListaSimple{
 
     constructor(){
         this.first = null
