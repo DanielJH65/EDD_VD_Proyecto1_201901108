@@ -14,8 +14,9 @@ usuarios.insertarFinal(new Usuario(2654568452521, "Oscar Armin", "EDD", sha256("
 
 const loginSection = document.getElementById("login")
 const signinSection = document.getElementById("signin")
+const adminSection = document.getElementById("admin")
 
-function hiddeLogin(){
+function hideLogin(){
     loginSection.setAttribute("class", "bg-gray-800 min-h-screen hidden items-center justify-center")
 }
 
@@ -27,8 +28,16 @@ function showSignin(){
     signinSection.setAttribute("class", "bg-gray-800 min-h-screen flex items-center justify-center")
 }
 
-function hiddeSignin(){
+function hideSignin(){
     signinSection.setAttribute("class", "bg-gray-800 min-h-screen hidden items-center justify-center")
+}
+
+function showAdmin(){
+    adminSection.setAttribute("class", "block")
+}
+
+function hideAdmin(){
+    adminSection.setAttribute("class", "hidden")
 }
 
 //Log in
@@ -44,7 +53,12 @@ function login(e){
     usuarioActual = usuarios.buscar(username.value, sha256(password.value), admin.checked)
 
     if(usuarioActual != null){
-        hiddeLogin()
+        hideLogin()
+        if(usuarioActual.dato.admin){
+            showAdmin()
+        }else{
+
+        }
     }else{
         Swal.fire('Oops...','Usuario o contraseña incorrectos','error')
     }
@@ -58,7 +72,7 @@ function login(e){
 
 formLogin.addEventListener("submit", login)
 signinLogin.addEventListener("click", ()=>{
-    hiddeLogin()
+    hideLogin()
     showSignin()
 })
 
@@ -89,6 +103,16 @@ function signin(e){
 
 formSignin.addEventListener("submit", signin)
 loginSignin.addEventListener("click", ()=>{
-    hiddeSignin()
+    hideSignin()
     showLogin()
+})
+
+// Admin
+
+const logOutAdmin = document.getElementById("logOutAdmin")
+
+logOutAdmin.addEventListener("click", ()=>{
+    hideAdmin()
+    showLogin()
+    usuarioActual = null
 })
