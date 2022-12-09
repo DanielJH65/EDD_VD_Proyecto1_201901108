@@ -1,0 +1,26 @@
+[
+    {
+        "dpi": 123456,
+        "name": "Prueba 1",
+        "username": "prueba1",
+        "password": "contra",
+        "phone": 12345,
+        "admin": false
+    },
+    {
+        "dpi": 123457,
+        "name": "Prueba 2",
+        "username": "prueba2",
+        "password": "contra2",
+        "phone": 12346,
+        "admin": true
+    },
+    {
+        "dpi": 123458,
+        "name": "Prueba 3",
+        "username": "prueba3",
+        "password": "contra3",
+        "phone": 12347,
+        "admin": false
+    }
+]
