@@ -1,0 +1,44 @@
+[
+    {
+        "artist" : "Prueba1",
+        "name" : "Cancion1",
+        "duration" : 2.5,
+        "gender" : ["rock", "pop"] 
+    },
+    {
+        "artist" : "Prueba1",
+        "name" : "Cancion2",
+        "duration" : 2.5,
+        "gender" : ["rock", "pop"] 
+    },
+    {
+        "artist" : "Prueba2",
+        "name" : "Cancion1",
+        "duration" : 2.5,
+        "gender" : ["rock", "pop"] 
+    },
+    {
+        "artist" : "Prueba2",
+        "name" : "Cancion2",
+        "duration" : 2.5,
+        "gender" : ["rock", "pop"] 
+    },
+    {
+        "artist" : "Prueba3",
+        "name" : "Cancion1",
+        "duration" : 2.5,
+        "gender" : ["rock", "pop"] 
+    },
+    {
+        "artist" : "Prueba3",
+        "name" : "Cancion2",
+        "duration" : 2.5,
+        "gender" : ["rock", "pop"] 
+    },
+    {
+        "artist" : "Prueba4",
+        "name" : "Cancion1",
+        "duration" : 2.5,
+        "gender" : ["rock", "pop"] 
+    }
+]

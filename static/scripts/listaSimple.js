@@ -49,7 +49,7 @@ export class ListaSimple{
         let tmp = this.first
         let dot = ""
         while(tmp != null){
-            dot += `Nodo${tmp.dato.dpi} [label = "${tmp.dato.dpi}\n${tmp.dato.username}\n${tmp.dato.name}\n${tmp.dato.password}\n${tmp.dato.phone}\n${tmp.dato.admin}"];\n`
+            dot += `Nodo${tmp.dato.dpi} [label = "${tmp.dato.dpi}\\n${tmp.dato.username}\\n${tmp.dato.name}\\n${tmp.dato.password}\\n${tmp.dato.phone}\\n${tmp.dato.admin}"];\n`
             tmp = tmp.next
         }
         return dot

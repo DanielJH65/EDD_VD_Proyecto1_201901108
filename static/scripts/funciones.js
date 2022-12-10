@@ -1,6 +1,7 @@
 import "./js-sha256.js"
-import { Usuario } from "./objetos.js"
+import { Usuario, Artista, Cancion } from "./objetos.js"
 import { ListaSimple } from "./listaSimple.js"
+import { ListaListas } from "./listaListas.js"
 
 // Secciones para mostrar y ocultar
 
@@ -35,6 +36,8 @@ export function hideAdmin() {
 // Login
 
 export let usuarios = new ListaSimple()
+export let artistasCanciones = new ListaListas()
+
 export let usuarioActual
 
 usuarios.insertarFinal(new Usuario(2654568452521, "Oscar Armin", "EDD", sha256("123"), "+502 (123) 123-4567", true))
@@ -93,12 +96,12 @@ export function ingresarUsuarios(){
 
     Swal.fire({
         title: 'Carga masiva de usuarios',
-        html: `<input type="file" id="fileUser" class="swal2-input w-full">`,
+        html: `<input type="file" id="fileUser" class="swal2-input">`,
         confirmButtonText: 'Cargar',
         focusConfirm: false,
         preConfirm: () => {
-            const file = Swal.getPopup().querySelector('#fileUser').files[0]
-            return file
+            const fileuser = Swal.getPopup().querySelector('#fileUser').files[0]
+            return fileuser
         }
     }).then((result) =>{
         const reader = new FileReader()
@@ -122,7 +125,83 @@ export function graficarUsuarios(){
     dot += usuarios.graficarConexionesUser()
     dot += "rankdir= LR;\n}\n"
 
-    document.getElementById("imgAdmin").remove()
+    if(document.getElementById("imgAdmin")){
+        document.getElementById("imgAdmin").remove()
+    }
+    if(document.querySelector("svg")){
+        document.querySelector("svg").setAttribute("class","hidden")
+    }
+
+    d3.select("#graficaAdmin").graphviz().width(500).height(500).renderDot(dot)
+}
+
+export function ingresarArtistas(){
+
+    Swal.fire({
+        title: 'Carga masiva de artistas',
+        html: `<input type="file" id="fileArtistas" class="swal2-input">`,
+        confirmButtonText: 'Cargar',
+        focusConfirm: false,
+        preConfirm: () => {
+            const fileartist = Swal.getPopup().querySelector('#fileArtistas').files[0]
+            return fileartist
+        }
+    }).then((result) =>{
+        const reader = new FileReader()
+
+        reader.addEventListener("load", ()=>{
+            let datos = JSON.parse(reader.result)
+            datos.forEach(user => {
+                artistasCanciones.insertarCabecera(new Artista(user.name, user.age, user.country))
+                Swal.fire("Registrados...",'Carga masiva realizada', 'success')
+            });
+        })
+
+        reader.readAsText(result.value)
+    })
+}
+
+export function ingresarCanciones(){
+
+    Swal.fire({
+        title: 'Carga masiva de canciones',
+        html: `<input type="file" id="fileCanciones" class="swal2-input">`,
+        confirmButtonText: 'Cargar',
+        focusConfirm: false,
+        preConfirm: () => {
+            const filesongs = Swal.getPopup().querySelector('#fileCanciones').files[0]
+            return filesongs
+        }
+    }).then((result) =>{
+        const reader = new FileReader()
+
+        reader.addEventListener("load", ()=>{
+            let datos = JSON.parse(reader.result)
+            datos.forEach(user => {
+                artistasCanciones.insertarValor(user.artist, new Cancion(user.artist, user.name, user.duration, user.gender))
+                Swal.fire("Registradas...",'Carga masiva realizada', 'success')
+            });
+        })
+
+        reader.readAsText(result.value)
+    })
+}
+
+export function graficarArtistasCanciones(){
+    let dot = "digraph G {\n"
+    dot += "node[shape=component, style=\"filled\", color=\"gray\"];\n"
+    dot += artistasCanciones.graficar()
+    //dot += usuarios.graficarConexionesUser()
+    dot += "}\n"
+
+    if(document.getElementById("imgAdmin")){
+        document.getElementById("imgAdmin").remove()
+    }
+    if(document.querySelector("svg")){
+        document.querySelector("svg").setAttribute("class","hidden")
+    }
+
+    console.log(dot)
 
     d3.select("#graficaAdmin").graphviz().width(500).height(500).renderDot(dot)
 }

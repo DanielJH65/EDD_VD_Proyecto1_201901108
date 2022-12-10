@@ -1,4 +1,4 @@
-import { hideAdmin, hideLogin, hideSignin, login, showAdmin, showLogin, showSignin, signin, usuarios, usuarioActual, ingresarUsuarios, graficarUsuarios } from "./funciones.js"
+import { hideAdmin, hideLogin, hideSignin, login, showAdmin, showLogin, showSignin, signin, usuarios, usuarioActual, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones } from "./funciones.js"
 
 //Log in
 
@@ -26,7 +26,13 @@ loginSignin.addEventListener("click", ()=>{
 
 const logOutAdmin = document.getElementById("logOutAdmin")
 const usuariosAdmin = document.getElementById("usuariosAdmin")
+const artistasAdmin = document.getElementById("artistasAdmin")
+const cancionesAdmin = document.getElementById("cancionesAdmin")
+const programadaAdmin = document.getElementById("programadaAdmin")
+const podcastAdmin = document.getElementById("podcastAdmin")
+
 const usuariosAdminGraph = document.getElementById("usersAdminGraph")
+const artistasCancionesAdminGraph = document.getElementById("cancionesAdminGraph")
 
 logOutAdmin.addEventListener("click", ()=>{
     hideAdmin()
@@ -34,4 +40,8 @@ logOutAdmin.addEventListener("click", ()=>{
 })
 
 usuariosAdmin.addEventListener("click", ()=>{ingresarUsuarios()})
+artistasAdmin.addEventListener("click", ()=>{ingresarArtistas()})
+cancionesAdmin.addEventListener("click", ()=>{ingresarCanciones()})
+
 usuariosAdminGraph.addEventListener("click", ()=>{graficarUsuarios()})
+artistasCancionesAdminGraph.addEventListener("click", ()=>{graficarArtistasCanciones()})

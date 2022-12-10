@@ -69,14 +69,14 @@
 
                 <form class="flex flex-col gap-4" id="formSignin">
                     <input class="p-5 mt-2 rounded-xl border" type="text" name="username" id="usernamesignin"
-                        placeholder="Username">
+                        placeholder="Username" required>
                     <input class="p-5 mt-2 rounded-xl border" type="text" name="name" id="namesignin"
-                        placeholder="Nombre Completo">
-                    <input class="p-5 mt-2 rounded-xl border" type="text" name="dpi" id="dpisignin" placeholder="DPI">
+                        placeholder="Nombre Completo" required>
+                    <input class="p-5 mt-2 rounded-xl border" type="text" name="dpi" id="dpisignin" placeholder="DPI" required>
                     <input class="p-5 mt-2 rounded-xl border" type="text" name="tel" id="telsignin"
-                        placeholder="Teléfono">
+                        placeholder="Teléfono" required>
                     <input class="p-5 mt-2 rounded-xl border" type="password" name="password" id="passwordsignin"
-                        placeholder="Password">
+                        placeholder="Password" required>
 
                     <button class="bg-sky-900 rounded-xl text-gray-200 py-4 hover:scale-110 duration-300"
                         type="submit">Sign in</button>
@@ -119,16 +119,16 @@
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="usuariosAdmin">Usuarios</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
-                    <a href="#" class="text-3xl hover:text-slate-100 duration-300">Artistas</a>
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="artistasAdmin">Artistas</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
-                    <a href="#" class="text-3xl hover:text-slate-100 duration-300">Canciones</a>
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="cancionesAdmin">Canciones</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
-                    <a href="#" class="text-3xl hover:text-slate-100 duration-300">Musica Programada</a>
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="programadaAdmin">Musica Programada</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
-                    <a href="#" class="text-3xl hover:text-slate-100 duration-300">Podcast</a>
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="podcastAdmin">Podcast</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="logOutAdmin">Log Out</a>
@@ -172,6 +172,54 @@
         <!-- #endadminContent -->
     </section>
     <!-- #endAdmin -->
+
+    <!-- #Usuario -->
+    <section class="hidden" id="usuario">
+        <!-- #Navbar User -->
+        <nav class="p-12 bg-gray-400 shadow md:flex md:items-center ms:justify-between">
+            <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold py-5 cursosr-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Yandex_Music_icon.svg/2048px-Yandex_Music_icon.svg.png"
+                        class="h-20 inline">
+                    Muster Cloud
+                </span>
+
+                <span class="text-4xl cursor-pointer mx-3 md:hidden block">
+                    <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+                </span>
+
+            </div>
+            <ul class="text-gray-800 md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-gray-400 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity:0 top-[-400px] transition-all ease-in duration-300"
+                id="navAdmin">
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="musicaUser">Musica</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="playlistUser">PLaylist</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="artistasUser">Artistas</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="amigosUser">Amigos</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="bloqueadosUser">Bloqueados</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="logOutUser">Log Out</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- #endNavbarUser -->
+
+        <!-- #UserContent -->
+        <section class="bg-gray-800 flex items-center justify-center py-6">
+            
+        </section>
+        <!-- #end UserContent -->
+    </section>
+    <!-- #endUsuario -->
 
     <!-- #Scripts -->
     <script src="./static/scripts/main.js" type="module"></script>
