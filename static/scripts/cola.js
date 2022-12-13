@@ -27,6 +27,17 @@ export class Cola{
         }
     }
 
+    buscarUser(_username){
+        let tmp = this.first
+        while(tmp != null){
+            if(tmp.dato.username == _username){
+                return tmp
+            }
+            tmp = tmp.next
+        }
+        return null
+    }
+
     imprimir(){
         let tmp = this.first
         while(tmp != null){
@@ -35,4 +46,37 @@ export class Cola{
         }
     }
 
+    obtenern(_n){
+        let tmp = this.first
+        if(tmp != null && _n <= this.size()){
+            for (let index = 0; index < _n; index++) {
+                tmp = tmp.next
+            }
+            return tmp.dato
+        }
+    }
+
+    size(){
+        let tmp = this.first
+        let size = 0
+        while(tmp != null){
+            size++
+            tmp = tmp.next
+        }
+        return size
+    }
+
+    graficar(){
+        let tmp = this.first
+        let dot = ""
+        while(tmp != null){
+            dot += `Nodo${tmp.dato.username}[label = "${tmp.dato.username}"];\n`
+            if(tmp.next != null){
+                dot+= `Nodo${tmp.dato.username} -> Nodo${tmp.next.dato.username}\n`
+                dot+= `Nodo${tmp.next.dato.username} -> Nodo${tmp.dato.username}\n`
+            }
+            tmp = tmp.next
+        }
+        return dot
+    }
 }

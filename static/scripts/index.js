@@ -1,0 +1,3 @@
+function agregarAmigo(){
+    agregarAmigo3()
+}

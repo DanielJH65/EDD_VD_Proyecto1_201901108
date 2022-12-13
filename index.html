@@ -174,7 +174,7 @@
     <!-- #endAdmin -->
 
     <!-- #Usuario -->
-    <section class="hidden" id="usuario">
+    <section class="hidden" id="user">
         <!-- #Navbar User -->
         <nav class="p-12 bg-gray-400 shadow md:flex md:items-center ms:justify-between">
             <div class="flex justify-between items-center">
@@ -195,7 +195,7 @@
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="musicaUser">Musica</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
-                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="playlistUser">PLaylist</a>
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="playlistUser">Playlist</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="artistasUser">Artistas</a>
@@ -207,6 +207,9 @@
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="bloqueadosUser">Bloqueados</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="podcastUser">Podcast</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="logOutUser">Log Out</a>
                 </li>
             </ul>
@@ -216,12 +219,45 @@
         <!-- #UserContent -->
         <section class="bg-gray-800 flex items-center justify-center py-6">
             
+            <!-- #UserFriendsContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="friendsContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
+                <!-- #UsersList -->
+                <div class="grid grid-cols-8 gap-4 space-y-4" id="usersListFriends"></div>
+                <!-- #endUsersList -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
+                <!-- #FriendsList -->
+                <div class="grid grid-cols-8 gap-4 space-y-4" id="friendsListFriends"></div>
+                <!-- #endFriendsList -->
+                <!-- #GraficaAmigos -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
+                <div id="graficaAmigos" class="mx-5 my-5"></div>
+                <!-- #endGraficaAmigos -->
+                
+            </div>
+            <!-- #endUserFriendsContent -->
+
+            <!-- #UserBloqueadosContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="bloqueadosContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Bloqueados</h2>
+                <!-- #BloqueadosList -->
+                <div class="grid grid-cols-8 gap-4 space-y-4" id="bloqueadosListBloqueados"></div>
+                <!-- #endBloqueadosList -->
+                <!-- #GraficaBloqueados -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Grafica Cola de bloqueados</h2>
+                <div id="graficaBloqueados" class="mx-5 my-5"></div>
+                <!-- #endGraficaBloqueados -->
+                
+            </div>
+            <!-- #endUserBloqueadosContent -->
+
         </section>
         <!-- #end UserContent -->
     </section>
     <!-- #endUsuario -->
 
     <!-- #Scripts -->
+    <script src="./static/scripts/index.js"></script>
     <script src="./static/scripts/main.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

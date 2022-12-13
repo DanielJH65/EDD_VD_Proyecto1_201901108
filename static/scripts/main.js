@@ -1,4 +1,4 @@
-import { hideAdmin, hideLogin, hideSignin, login, showAdmin, showLogin, showSignin, signin, usuarios, usuarioActual, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones } from "./funciones.js"
+import { hideAdmin, hideLogin, hideSignin, login, showAdmin, showLogin, showSignin, signin, usuarios, usuarioActual, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, hideUser, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, hideUserFriendsContent, logOutUSer, mostrarBloqueados } from "./funciones.js"
 
 //Log in
 
@@ -33,6 +33,8 @@ const podcastAdmin = document.getElementById("podcastAdmin")
 
 const usuariosAdminGraph = document.getElementById("usersAdminGraph")
 const artistasCancionesAdminGraph = document.getElementById("cancionesAdminGraph")
+const podcastsAdminGraph = document.getElementById("podcastAdminGraph")
+const programadasAdminGraph = document.getElementById("programadasAdminGraph")
 
 logOutAdmin.addEventListener("click", ()=>{
     hideAdmin()
@@ -42,6 +44,21 @@ logOutAdmin.addEventListener("click", ()=>{
 usuariosAdmin.addEventListener("click", ()=>{ingresarUsuarios()})
 artistasAdmin.addEventListener("click", ()=>{ingresarArtistas()})
 cancionesAdmin.addEventListener("click", ()=>{ingresarCanciones()})
+programadaAdmin.addEventListener("click", ()=>{ingresarProgramadas()})
+podcastAdmin.addEventListener("click", ()=>{ingresarPodcast()})
 
 usuariosAdminGraph.addEventListener("click", ()=>{graficarUsuarios()})
 artistasCancionesAdminGraph.addEventListener("click", ()=>{graficarArtistasCanciones()})
+podcastsAdminGraph.addEventListener("click", ()=>{graficarPodcast()})
+programadasAdminGraph.addEventListener("click", ()=>{graficarProgramadas()})
+
+// Usuarios
+
+const logOutUser = document.getElementById("logOutUser")
+const amigosUser = document.getElementById("amigosUser")
+const bloqueadosUser = document.getElementById("bloqueadosUser")
+
+logOutUser.addEventListener("click", ()=>{logOutUSer()})
+
+amigosUser.addEventListener("click", ()=>{mostrarUsuarios()})
+bloqueadosUser.addEventListener("click", ()=>{mostrarBloqueados()})

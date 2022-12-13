@@ -13,6 +13,13 @@ export class ListaListas{
             this.first = newNodo
             this.tail = this.first
         }else{
+            let tmp = this.first
+            while(tmp != null){
+                if(tmp.dato.name == _dato.name){
+                    return false
+                }
+                tmp = tmp.next
+            }
             newNodo.next = this.first
             this.first = newNodo
             this.first.next.prev = this.first

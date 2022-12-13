@@ -20,10 +20,17 @@ export class ListaSimple{
             this.first = newNodo
         }else{
             while(tmp.next != null){
+                if(tmp.dato.dpi == _dato.dpi || tmp.dato.username == _dato.username){
+                    return false
+                }
                 tmp = tmp.next
+            }
+            if(tmp.dato.dpi == _dato.dpi || tmp.dato.username == _dato.username){
+                return false
             }
             tmp.next = newNodo
         }
+        return true
     }
 
     imprimir(){
@@ -34,10 +41,21 @@ export class ListaSimple{
         }
     }
 
-    buscarUser(username, password, admin){
+    buscarUser(_username, _password, _admin){
         let tmp = this.first
         while(tmp != null){
-            if(tmp.dato.username == username && tmp.dato.password == password && tmp.dato.admin == admin){
+            if(tmp.dato.username == _username && tmp.dato.password == _password && tmp.dato.admin == _admin){
+                return tmp
+            }
+            tmp = tmp.next
+        }
+        return null
+    }
+
+    buscarUser2(_username){
+        let tmp = this.first
+        while(tmp != null){
+            if(tmp.dato.username == _username){
                 return tmp
             }
             tmp = tmp.next
@@ -63,6 +81,26 @@ export class ListaSimple{
             tmp = tmp.next
         }
         return dot
+    }
+
+    size(){
+        let size = 0
+        let tmp = this.first
+        while(tmp != null){
+            size++
+            tmp = tmp.next
+        }
+        return size
+    }
+
+    obtenern(_n){
+        let tmp = this.first
+        if(tmp != null && _n <= this.size()){
+            for (let index = 0; index < _n; index++) {
+                tmp = tmp.next
+            }
+            return tmp.dato
+        }
     }
 
 }
