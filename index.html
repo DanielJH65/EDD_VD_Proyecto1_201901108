@@ -219,15 +219,73 @@
         <!-- #UserContent -->
         <section class="bg-gray-800 flex items-center justify-center py-6">
             
+            <!-- #UserMusicContent -->
+            <div class="bg-gray-400 hidden flex-col items-center justify-center px-12" id="musicContent">
+                <h2 class="font-bold text-2xl text-gray-900 py-6 my-5">Canciones Cargadas</h2>
+                <!-- #MusicList -->
+                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl" id="usersMusicActual">
+                    <span class="text-3xl py-3">Reproductor de Música</span>
+                    <img class="rounded-2xl w-72 h-72" src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg" alt="Fondo Reproductor">
+                    <span class="text-xl py-3" id="nombreCancionMusic">Nombre de la Cancion</span>
+                    <span class="text-xl py-3" id="artistaCancionMusic">Artista</span>
+                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2" style="background-color: #f3f4f6;">
+                    <div class="grid grid-cols-3 gap-6 p-0 m-0">
+                        <span class="text-4xl cursor-pointer"><ion-icon name="play-back-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer"><ion-icon name="play-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer"><ion-icon name="play-forward-circle-outline"></ion-icon></span>
+                    </div>
+                </div>
+                <!-- #endMusicList -->
+
+            </div>
+            <!-- #endUserMusicContent -->
+
+            <!-- #UserPLaylistContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="playlistContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
+                <!-- #UsersList -->
+                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
+                <!-- #endUsersList -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
+                <!-- #FriendsList -->
+                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
+                <!-- #endFriendsList -->
+                <!-- #GraficaAmigos -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
+                <div id="" class="mx-5 my-5"></div>
+                <!-- #endGraficaAmigos -->
+
+            </div>
+            <!-- #endUserPLaylistContent -->
+
+            <!-- #UserArtistasContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="artistasContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
+                <!-- #UsersList -->
+                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
+                <!-- #endUsersList -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
+                <!-- #FriendsList -->
+                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
+                <!-- #endFriendsList -->
+                <!-- #GraficaAmigos -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
+                <div id="" class="mx-5 my-5"></div>
+                <!-- #endGraficaAmigos -->
+
+            </div>
+            <!-- #endUserPlaylistContent -->
+
             <!-- #UserFriendsContent -->
             <div class="bg-gray-400 hidden items-center justify-center" id="friendsContent">
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
                 <!-- #UsersList -->
-                <div class="grid grid-cols-8 gap-4 space-y-4" id="usersListFriends"></div>
+                <div class="grid grid-cols-8 gap-4" id="usersListFriends"></div>
                 <!-- #endUsersList -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
                 <!-- #FriendsList -->
-                <div class="grid grid-cols-8 gap-4 space-y-4" id="friendsListFriends"></div>
+                <div class="grid grid-cols-8 gap-4" id="friendsListFriends"></div>
+                <button class="bg-red-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl" id ="eliminarAmigoFriends">Eliminar</button>
                 <!-- #endFriendsList -->
                 <!-- #GraficaAmigos -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
@@ -241,7 +299,8 @@
             <div class="bg-gray-400 hidden items-center justify-center" id="bloqueadosContent">
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Bloqueados</h2>
                 <!-- #BloqueadosList -->
-                <div class="grid grid-cols-8 gap-4 space-y-4" id="bloqueadosListBloqueados"></div>
+                <div class="grid grid-cols-8 gap-4" id="bloqueadosListBloqueados"></div>
+                <button class="bg-green-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl" id ="desbloquearUserFriends">Desbloquear</button>
                 <!-- #endBloqueadosList -->
                 <!-- #GraficaBloqueados -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Grafica Cola de bloqueados</h2>
@@ -250,6 +309,24 @@
                 
             </div>
             <!-- #endUserBloqueadosContent -->
+
+            <!-- #UserPodcastContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="podcastContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
+                <!-- #UsersList -->
+                <div class="grid grid-cols-8 gap-4" id=""></div>
+                <!-- #endUsersList -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
+                <!-- #FriendsList -->
+                <div class="grid grid-cols-8 gap-4" id=""></div>
+                <!-- #endFriendsList -->
+                <!-- #GraficaAmigos -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
+                <div id="" class="mx-5 my-5"></div>
+                <!-- #endGraficaAmigos -->
+
+            </div>
+            <!-- #endUserPodcastContent --> 
 
         </section>
         <!-- #end UserContent -->

@@ -1,4 +1,4 @@
-import { hideAdmin, hideLogin, hideSignin, login, showAdmin, showLogin, showSignin, signin, usuarios, usuarioActual, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, hideUser, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, hideUserFriendsContent, logOutUSer, mostrarBloqueados } from "./funciones.js"
+import { hideAdmin, hideLogin, hideSignin, login, showLogin, showSignin, signin, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, logOutUSer, mostrarBloqueados, mostrarMusica, mostrarPlaylist, mostrarArtistas, mostrarPodcast, eliminarAmigo, desbloquearUser } from "./funciones.js"
 
 //Log in
 
@@ -55,10 +55,21 @@ programadasAdminGraph.addEventListener("click", ()=>{graficarProgramadas()})
 // Usuarios
 
 const logOutUser = document.getElementById("logOutUser")
+const musicUser = document.getElementById("musicaUser")
+const playlistUser = document.getElementById("playlistUser")
+const artistasUser = document.getElementById("artistasUser")
 const amigosUser = document.getElementById("amigosUser")
 const bloqueadosUser = document.getElementById("bloqueadosUser")
+const podcastUser = document.getElementById("podcastUser")
+const eliminarAmigos = document.getElementById("eliminarAmigoFriends")
+const desbloquearUsers = document.getElementById("desbloquearUserFriends")
 
 logOutUser.addEventListener("click", ()=>{logOutUSer()})
-
+musicUser.addEventListener("click", ()=>{mostrarMusica()})
+playlistUser.addEventListener("click", ()=>{mostrarPlaylist()})
+artistasUser.addEventListener("click", ()=>{mostrarArtistas()})
 amigosUser.addEventListener("click", ()=>{mostrarUsuarios()})
 bloqueadosUser.addEventListener("click", ()=>{mostrarBloqueados()})
+podcastUser.addEventListener("click", ()=>{mostrarPodcast()})
+eliminarAmigos.addEventListener("click", ()=>{eliminarAmigo()})
+desbloquearUsers.addEventListener("click", ()=>{desbloquearUser()})

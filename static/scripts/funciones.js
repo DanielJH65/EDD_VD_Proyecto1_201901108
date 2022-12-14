@@ -13,6 +13,10 @@ const adminSection = document.getElementById("admin")
 const userSection = document.getElementById("user")
 const userFriendsConten = document.getElementById("friendsContent")
 const bloqueadosFriendsContent = document.getElementById("bloqueadosContent")
+const userMusicContent = document.getElementById("musicContent")
+const userPlaylistContent = document.getElementById("playlistContent")
+const userArtistasContent = document.getElementById("artistasContent")
+const userPodcastContent = document.getElementById("podcastContent")
 
 export function hideLogin() {
     loginSection.setAttribute("class", "bg-gray-800 min-h-screen hidden items-center justify-center")
@@ -46,6 +50,30 @@ export function hideUser() {
     userSection.setAttribute("class", "hidden")
 }
 
+export function showUserMusicContent(){
+    userMusicContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center px-12")
+}
+
+export function hideUserMusicContent(){
+    userMusicContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center px-12")
+}
+
+export function showUserPlaylistContent(){
+    userPlaylistContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
+}
+
+export function hideUserPLaylistContent(){
+    userPlaylistContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
+}
+
+export function showUserArtistasContent(){
+    userArtistasContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
+}
+
+export function hideUserArtistasContent(){
+    userArtistasContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
+}
+
 export function showUserFriendsContent(){
     userFriendsConten.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
 }
@@ -60,6 +88,14 @@ export function showBloqueadosContent(){
 
 export function hideBloqueadosContent(){
     bloqueadosFriendsContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
+}
+
+export function showUserPodcastContent(){
+    userPodcastContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
+}
+
+export function hideUSerPodcastContent(){
+    userPodcastContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
 }
 
 // Estructuras
@@ -318,13 +354,48 @@ export function graficarPodcast(){
 
 export function logOutUSer(){
     hideUser()
+    hideUserMusicContent()
+    hideUserPLaylistContent()
+    hideUserArtistasContent()
     hideUserFriendsContent()
     hideBloqueadosContent()
+    hideUSerPodcastContent()
     showLogin()
 }
 
-export function mostrarUsuarios(){
+export function mostrarMusica(){
+    hideUserPLaylistContent()
+    hideUserArtistasContent()
+    hideUserFriendsContent()
     hideBloqueadosContent()
+    hideUSerPodcastContent()
+    showUserMusicContent()
+}
+
+export function mostrarPlaylist(){
+    hideUserMusicContent()
+    hideUserArtistasContent()
+    hideUserFriendsContent()
+    hideBloqueadosContent()
+    hideUSerPodcastContent()
+    showUserPlaylistContent()
+}
+
+export function mostrarArtistas(){
+    hideUserMusicContent()
+    hideUserPLaylistContent()
+    hideUserFriendsContent()
+    hideBloqueadosContent()
+    hideUSerPodcastContent()
+    showUserArtistasContent()
+}
+
+export function mostrarUsuarios(){
+    hideUserMusicContent()
+    hideUserPLaylistContent()
+    hideUserArtistasContent()
+    hideBloqueadosContent()
+    hideUSerPodcastContent()
     showUserFriendsContent()
 
     let usersList = document.getElementById("usersListFriends")
@@ -359,7 +430,10 @@ export function mostrarUsuarios(){
         userBox.appendChild(userIcon)
         userBox.appendChild(userName)
 
-        if(usuarioActual.dato.friends.buscarUser(user.username) != null){
+        if(usuarioActual.dato.friends.buscarUser(user.username) != null ){
+            if(usuarioActual.dato.bloqueados.buscarUser(user.username) == null){
+                userBox.appendChild(botonBloquear)
+            }
             friendsList.appendChild(userBox)
         }else{
             if(usuarioActual.dato.bloqueados.buscarUser(user.username) == null && usuarioActual.dato.username != user.username){
@@ -374,7 +448,7 @@ export function mostrarUsuarios(){
 }
 
 export function agregarAmigo(){
-    let div1 = document.getElementById("usersListFriends")
+    let div1 = document.getElementById("friendsContent")
     let botonAgregar = div1.querySelectorAll("#agregarAmigoUser")
     let botonBloquear = div1.querySelectorAll("#bloquearUsuarioUser")
 
@@ -395,6 +469,11 @@ export function agregarAmigo(){
     })
 }
 
+export function eliminarAmigo(){
+    usuarioActual.dato.friends.pop()
+    mostrarUsuarios()
+}
+
 export function mostrarAmigosGrafica(){
     let dot = "digraph G {\n"
     dot += "node[shape=record, style=\"filled\"];\n"
@@ -409,7 +488,11 @@ export function mostrarAmigosGrafica(){
 }
 
 export function mostrarBloqueados(){
+    hideUserMusicContent()
+    hideUserPLaylistContent()
+    hideUserArtistasContent()
     hideUserFriendsContent()
+    hideUSerPodcastContent()
     showBloqueadosContent()
 
     const bloqueadosListBloqueados = document.getElementById("bloqueadosListBloqueados")
@@ -431,21 +514,19 @@ export function mostrarBloqueados(){
         userName.setAttribute("class", "text-xl font-bold text-gray-800 mx-5")
         userName.innerHTML = user.username
 
-        let botonDesbloquear = document.createElement("button")
-        botonDesbloquear.setAttribute("id", "desbloquearBloqueadosUser")
-        botonDesbloquear.setAttribute("name", user.username)
-        botonDesbloquear.setAttribute("class", "mt-5 py-2 px-5 bg-green-700 border-green-800 rounded-xl hover:scale-110 duration-300 text-slate-100")
-        botonDesbloquear.innerHTML = "Desbloquear"
-
         let userBox = document.createElement("div")
         userBox.setAttribute("class", "flex flex-col")
         userBox.appendChild(userIcon)
         userBox.appendChild(userName)
-        userBox.appendChild(botonDesbloquear)
 
         bloqueadosListBloqueados.appendChild(userBox)
     }
     mostrarBloqueadosGrafica()
+}
+
+export function desbloquearUser(){
+    usuarioActual.dato.bloqueados.dequeue()
+    mostrarBloqueados()
 }
 
 export function mostrarBloqueadosGrafica(){
@@ -459,4 +540,13 @@ export function mostrarBloqueadosGrafica(){
     }
 
     d3.select("#graficaBloqueados").graphviz().width(800).height(500).renderDot(dot)
+}
+
+export function mostrarPodcast(){
+    hideUserMusicContent()
+    hideUserPLaylistContent()
+    hideUserArtistasContent()
+    hideUserFriendsContent()
+    hideBloqueadosContent()
+    showUserPodcastContent()
 }

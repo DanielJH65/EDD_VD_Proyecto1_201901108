@@ -94,4 +94,12 @@ export class ListaListas{
         }
         return dot
     }
+
+    size(){
+        let size2 = 0
+        let temp = this.first
+        while(temp != null){
+            
+        }
+    }
 }
