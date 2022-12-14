@@ -4,6 +4,7 @@ import { ListaSimple } from "./listaSimple.js"
 import { ListaListas } from "./listaListas.js"
 import { ArbolBB } from "./arbolBB.js"
 import { MatrizDispersa } from "./matrizDispersa.js"
+import { meses } from "./meses.js"
 
 // Secciones para mostrar y ocultar
 
@@ -50,51 +51,51 @@ export function hideUser() {
     userSection.setAttribute("class", "hidden")
 }
 
-export function showUserMusicContent(){
+export function showUserMusicContent() {
     userMusicContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center px-12")
 }
 
-export function hideUserMusicContent(){
+export function hideUserMusicContent() {
     userMusicContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center px-12")
 }
 
-export function showUserPlaylistContent(){
+export function showUserPlaylistContent() {
     userPlaylistContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
 }
 
-export function hideUserPLaylistContent(){
+export function hideUserPLaylistContent() {
     userPlaylistContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
 }
 
-export function showUserArtistasContent(){
+export function showUserArtistasContent() {
     userArtistasContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
 }
 
-export function hideUserArtistasContent(){
+export function hideUserArtistasContent() {
     userArtistasContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
 }
 
-export function showUserFriendsContent(){
+export function showUserFriendsContent() {
     userFriendsConten.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
 }
 
-export function hideUserFriendsContent(){
+export function hideUserFriendsContent() {
     userFriendsConten.setAttribute("class", "bg-gray-400 hidden items-center justify-center")
 }
 
-export function showBloqueadosContent(){
+export function showBloqueadosContent() {
     bloqueadosFriendsContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
 }
 
-export function hideBloqueadosContent(){
+export function hideBloqueadosContent() {
     bloqueadosFriendsContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
 }
 
-export function showUserPodcastContent(){
+export function showUserPodcastContent() {
     userPodcastContent.setAttribute("class", "bg-gray-400 flex flex-col items-center justify-center")
 }
 
-export function hideUSerPodcastContent(){
+export function hideUSerPodcastContent() {
     userPodcastContent.setAttribute("class", "bg-gray-400 hidden flex-col items-center justify-center")
 }
 
@@ -146,9 +147,9 @@ export function signin(e) {
     const dpi = document.getElementById("dpisignin")
     const tel = document.getElementById("telsignin")
 
-    if(usuarios.insertarFinal(new Usuario(dpi.value, name.value, username.value, sha256(password.value), tel.value, false))){        
+    if (usuarios.insertarFinal(new Usuario(dpi.value, name.value, username.value, sha256(password.value), tel.value, false))) {
         Swal.fire('Perfecto...', 'Usuario registrado', 'success')
-    }else{
+    } else {
         Swal.fire('Oops...', 'Dpi o nombre de usuario ya registrados', 'error')
     }
 
@@ -163,7 +164,7 @@ export function signin(e) {
 
 //Admin
 
-export function ingresarUsuarios(){
+export function ingresarUsuarios() {
 
     Swal.fire({
         title: 'Carga masiva de usuarios',
@@ -174,14 +175,14 @@ export function ingresarUsuarios(){
             const fileuser = Swal.getPopup().querySelector('#fileUser').files[0]
             return fileuser
         }
-    }).then((result) =>{
+    }).then((result) => {
         const reader = new FileReader()
 
-        reader.addEventListener("load", ()=>{
+        reader.addEventListener("load", () => {
             let datos = JSON.parse(reader.result)
             datos.forEach(user => {
                 usuarios.insertarFinal(new Usuario(user.dpi, user.name, user.username, sha256(user.password), user.phone, user.admin))
-                Swal.fire("Registrados...",'Carga masiva realizada', 'success')
+                Swal.fire("Registrados...", 'Carga masiva realizada', 'success')
             });
         })
 
@@ -189,24 +190,24 @@ export function ingresarUsuarios(){
     })
 }
 
-export function graficarUsuarios(){
+export function graficarUsuarios() {
     let dot = "digraph G {\n"
     dot += "node[shape=component, style=\"filled\", color=\"gray\"];\n"
     dot += usuarios.graficarUser()
     dot += usuarios.graficarConexionesUser()
     dot += "rankdir= LR;\n}\n"
 
-    if(document.getElementById("imgAdmin")){
+    if (document.getElementById("imgAdmin")) {
         document.getElementById("imgAdmin").remove()
     }
-    if(document.querySelector("svg")){
-        document.querySelector("svg").setAttribute("class","hidden")
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
     }
 
     d3.select("#graficaAdmin").graphviz().width(500).height(500).renderDot(dot)
 }
 
-export function ingresarArtistas(){
+export function ingresarArtistas() {
 
     Swal.fire({
         title: 'Carga masiva de artistas',
@@ -217,22 +218,22 @@ export function ingresarArtistas(){
             const fileartist = Swal.getPopup().querySelector('#fileArtistas').files[0]
             return fileartist
         }
-    }).then((result) =>{
+    }).then((result) => {
         const reader = new FileReader()
 
-        reader.addEventListener("load", ()=>{
+        reader.addEventListener("load", () => {
             let datos = JSON.parse(reader.result)
             datos.forEach(user => {
                 artistasCanciones.insertarCabecera(new Artista(user.name, user.age, user.country))
             });
-            Swal.fire("Registrados...",'Carga masiva realizada', 'success')
+            Swal.fire("Registrados...", 'Carga masiva realizada', 'success')
         })
 
         reader.readAsText(result.value)
     })
 }
 
-export function ingresarCanciones(){
+export function ingresarCanciones() {
 
     Swal.fire({
         title: 'Carga masiva de canciones',
@@ -243,14 +244,14 @@ export function ingresarCanciones(){
             const filesongs = Swal.getPopup().querySelector('#fileCanciones').files[0]
             return filesongs
         }
-    }).then((result) =>{
+    }).then((result) => {
         const reader = new FileReader()
 
-        reader.addEventListener("load", ()=>{
+        reader.addEventListener("load", () => {
             let datos = JSON.parse(reader.result)
             datos.forEach(user => {
                 artistasCanciones.insertarValor(user.artist, new Cancion(user.artist, user.name, user.duration, user.gender))
-                Swal.fire("Registradas...",'Carga masiva realizada', 'success')
+                Swal.fire("Registradas...", 'Carga masiva realizada', 'success')
             });
         })
 
@@ -258,23 +259,22 @@ export function ingresarCanciones(){
     })
 }
 
-export function graficarArtistasCanciones(){
+export function graficarArtistasCanciones() {
     let dot = "digraph G {\n"
     dot += "node[shape=component, style=\"filled\", color=\"gray\"];\n"
     dot += artistasCanciones.graficar()
     dot += "}\n"
 
-    if(document.getElementById("imgAdmin")){
+    if (document.getElementById("imgAdmin")) {
         document.getElementById("imgAdmin").remove()
     }
-    if(document.querySelector("svg")){
-        document.querySelector("svg").setAttribute("class","hidden")
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
     }
-
     d3.select("#graficaAdmin").graphviz().width(500).height(500).renderDot(dot)
 }
 
-export function ingresarProgramadas(){
+export function ingresarProgramadas() {
     Swal.fire({
         title: 'Carga masiva de música programada',
         html: `<input type="file" id="fileProgramada" class="swal2-input">`,
@@ -284,32 +284,31 @@ export function ingresarProgramadas(){
             const fileProgramada = Swal.getPopup().querySelector('#fileProgramada').files[0]
             return fileProgramada
         }
-    }).then((result) =>{
+    }).then((result) => {
         const reader = new FileReader()
 
-        reader.addEventListener("load", ()=>{
+        reader.addEventListener("load", () => {
             let datos = JSON.parse(reader.result)
             datos.forEach(user => {
                 programada.insertar(user.month, user.day, new Programada(user.month, user.day, user.song, user.artist))
-                Swal.fire("Registrados...",'Carga masiva realizada', 'success')
+                Swal.fire("Registrados...", 'Carga masiva realizada', 'success')
             });
         })
         reader.readAsText(result.value)
     })
 }
 
-export function graficarProgramadas(){
-    if(document.getElementById("imgAdmin")){
+export function graficarProgramadas() {
+    if (document.getElementById("imgAdmin")) {
         document.getElementById("imgAdmin").remove()
     }
-    if(document.querySelector("svg")){
-        document.querySelector("svg").setAttribute("class","hidden")
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
     }
-    console.log(programada.configraph())
     d3.select("#graficaAdmin").graphviz().width(500).height(500).renderDot(programada.configraph())
 }
 
-export function ingresarPodcast(){
+export function ingresarPodcast() {
     Swal.fire({
         title: 'Carga masiva de podcasts',
         html: `<input type="file" id="filePodcasts" class="swal2-input">`,
@@ -319,14 +318,14 @@ export function ingresarPodcast(){
             const filePodcasts = Swal.getPopup().querySelector('#filePodcasts').files[0]
             return filePodcasts
         }
-    }).then((result) =>{
+    }).then((result) => {
         const reader = new FileReader()
 
-        reader.addEventListener("load", ()=>{
+        reader.addEventListener("load", () => {
             let datos = JSON.parse(reader.result)
             datos.forEach(user => {
                 podcasts.insertar(new Podcast(user.name, user.topic, user.guests, user.duration))
-                Swal.fire("Registrados...",'Carga masiva realizada', 'success')
+                Swal.fire("Registrados...", 'Carga masiva realizada', 'success')
             });
         })
 
@@ -334,17 +333,17 @@ export function ingresarPodcast(){
     })
 }
 
-export function graficarPodcast(){
+export function graficarPodcast() {
     let dot = "digraph G {\n"
     dot += "node[shape=record, style=\"filled\"];\n"
     dot += podcasts.graficar()
     dot += "}\n"
 
-    if(document.getElementById("imgAdmin")){
+    if (document.getElementById("imgAdmin")) {
         document.getElementById("imgAdmin").remove()
     }
-    if(document.querySelector("svg")){
-        document.querySelector("svg").setAttribute("class","hidden")
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
     }
 
     d3.select("#graficaAdmin").graphviz().width(500).height(500).renderDot(dot)
@@ -352,7 +351,7 @@ export function graficarPodcast(){
 
 // Usuarios
 
-export function logOutUSer(){
+export function logOutUSer() {
     hideUser()
     hideUserMusicContent()
     hideUserPLaylistContent()
@@ -363,25 +362,181 @@ export function logOutUSer(){
     showLogin()
 }
 
-export function mostrarMusica(){
+export function mostrarMusica() {
     hideUserPLaylistContent()
     hideUserArtistasContent()
     hideUserFriendsContent()
     hideBloqueadosContent()
     hideUSerPodcastContent()
     showUserMusicContent()
+
+    let cancionActualindex = 0
+    if (artistasCanciones.size() > 0) {
+        let cancionActual = artistasCanciones.obtenern(cancionActualindex)
+        const labelCancion = document.getElementById("nombreCancionMusic")
+        const labelArtista = document.getElementById("artistaCancionMusic")
+
+        labelCancion.innerHTML = cancionActual.nombre
+        labelArtista.innerHTML = cancionActual.artista
+
+        const agregarPlaylistMusic = document.getElementById("agregarPlaylistMusic")
+        agregarPlaylistMusic.setAttribute("name", cancionActualindex)
+
+        const botonSiguienteMusic = document.getElementById("nextCancionMusic")
+        const botonAnteriorMusic = document.getElementById("anteriorCancionMusic")
+
+        botonSiguienteMusic.addEventListener("click", () => {
+            cancionActualindex++
+            if (artistasCanciones.size() > cancionActualindex) {
+                cancionActual = artistasCanciones.obtenern(cancionActualindex)
+                labelCancion.innerHTML = cancionActual.nombre
+                labelArtista.innerHTML = cancionActual.artista
+                agregarPlaylistMusic.setAttribute("name", cancionActualindex)
+            }
+        })
+        botonAnteriorMusic.addEventListener("click", () => {
+            cancionActualindex--
+            if (cancionActualindex >= 0) {
+                cancionActual = artistasCanciones.obtenern(cancionActualindex)
+                labelCancion.innerHTML = cancionActual.nombre
+                labelArtista.innerHTML = cancionActual.artista
+                agregarPlaylistMusic.setAttribute("name", cancionActualindex)
+            }
+        })
+    }
 }
 
-export function mostrarPlaylist(){
+export function capturarFecha() {
+    const fechaProgramadaMusicCalendar = document.getElementById("fechaProgramadaMusicCalendar")
+    const fecha = fechaProgramadaMusicCalendar.value.split("-")
+
+    const cancion = programada.obtener(meses[parseInt(fecha[1]) - 1], parseInt(fecha[2]).toString())
+    if (cancion != null) {
+        const nombreCancionMusicCalendar = document.getElementById("nombreCancionMusicCalendar")
+        const artistaCancionMusicCalendar = document.getElementById("artistaCancionMusicCalendar")
+        const nombreCancionMusicCalendar2 = document.getElementById("nombreCancionMusicCalendar2")
+        const artistaCancionMusicCalendar2 = document.getElementById("artistaCancionMusicCalendar2")
+        const lanzamientoCancionMusicCalendar2 = document.getElementById("lanzamientoCancionMusicCalendar2")
+
+        nombreCancionMusicCalendar.innerHTML = cancion.song
+        nombreCancionMusicCalendar2.innerHTML = cancion.song
+        artistaCancionMusicCalendar.innerHTML = cancion.artist
+        artistaCancionMusicCalendar2.innerHTML = cancion.artist
+        lanzamientoCancionMusicCalendar2.innerHTML = cancion.month + " - " + cancion.day
+
+    } else {
+        Swal.fire('Oops...', 'No hay cancion programada para esa fecha', 'warning')
+    }
+}
+
+export function publicarCancion() {
+    Swal.fire({
+        title: 'Publicar nueva Canción',
+        html: `<input type="text" id="nombre" class="swal2-input" placeholder="Nombre">
+        <input type="text" id="duracion" class="swal2-input" placeholder="Duracion">
+        <input type="text" id="genero" class="swal2-input" placeholder="Generos (Separados por coma)">
+        <input type="date" id="fecha" class="swal2-input" value="2000-01-01" min="2022-01-01" max="2022-12-31">`,
+        confirmButtonText: 'Publicar o Programar',
+        focusConfirm: false,
+        preConfirm: () => {
+            const nombre = Swal.getPopup().querySelector('#nombre').value
+            const genero = Swal.getPopup().querySelector('#genero').value.split(",")
+            const duracion = Swal.getPopup().querySelector('#duracion').value
+            const fecha = Swal.getPopup().querySelector('#fecha').value.split("-")
+            if (!nombre) {
+                Swal.showValidationMessage(`Ingrese un nombre para la canción`)
+            }
+            return { 'nombre': nombre, 'genero': genero, 'duracion': duracion, 'fecha': fecha }
+        }
+    }).then((result) => {
+        if (parseInt(result.value.fecha[0]) != 2000) {
+            let dia = parseInt(result.value.fecha[2]).toString()
+            let mes = meses[parseInt(result.value.fecha[1]) - 1]
+            programada.insertar(mes, dia, new Programada(mes, dia, result.value.nombre, usuarioActual.dato.username))
+            Swal.fire("Programada...", 'Canción registrada con exito', 'success')
+        } else {
+            let artista = artistasCanciones.obtenerArtista(usuarioActual.dato.username)
+            if (artista == null) {
+                Swal.fire({
+                    title: 'Ingrese los datos de artista y vuelva a publicar la canción',
+                    html: `<input type="text" id="country" class="swal2-input" placeholder="Country">
+                    <input type="text" id="age" class="swal2-input" placeholder="Age">`,
+                    confirmButtonText: 'Crear datos de Artista',
+                    focusConfirm: false,
+                    preConfirm: () => {
+                        const country = Swal.getPopup().querySelector('#country').value
+                        const age = Swal.getPopup().querySelector('#age').value
+                        if (!country || !age) {
+                            Swal.showValidationMessage(`Ingrese un país y su edad`)
+                        }
+                        return { 'country': country, 'age': age }
+                    }
+                }).then((result) => {
+                    artistasCanciones.insertarCabecera(new Artista(usuarioActual.dato.username, result.value.age, result.value.country))
+                    Swal.fire("Creado...", 'Artista creado con exito', 'success')
+                })
+            } else {
+                artista.lista.insertarFinal(new Cancion(usuarioActual.dato.username, result.value.nombre, result.value.duracion, result.value.genero))
+                Swal.fire("Publicada...", 'Canción publicada con exito', 'success')
+            }
+        }
+    })
+}
+
+export function agregarCancionAPlayslist() {
+    let agregarPlaylistMusic = document.getElementById("agregarPlaylistMusic")
+    if (parseInt(agregarPlaylistMusic.getAttribute("name")) >= 0) {
+        usuarioActual.dato.playList.insertarFinal(artistasCanciones.obtenern(parseInt(agregarPlaylistMusic.getAttribute("name"))))
+        Swal.fire("Agregada...", "Cancion agregada a la playlist", 'success')
+    }
+}
+
+export function mostrarPlaylist() {
     hideUserMusicContent()
     hideUserArtistasContent()
     hideUserFriendsContent()
     hideBloqueadosContent()
     hideUSerPodcastContent()
     showUserPlaylistContent()
+
+    if (usuarioActual.dato.playList.first != null) {
+        let cancionActual = usuarioActual.dato.playList.first
+        const labelCancion = document.getElementById("nombreCancionPlaylist")
+        const labelArtista = document.getElementById("artistaCancionPlaylist")
+
+        labelCancion.innerHTML = cancionActual.dato.nombre
+        labelArtista.innerHTML = cancionActual.dato.artista
+
+        const botonSiguienteMusic = document.getElementById("nextCancionPlaylist")
+        const botonAnteriorMusic = document.getElementById("anteriorCancionPlaylist")
+
+        botonSiguienteMusic.addEventListener("click", () => {
+            cancionActual = cancionActual.next
+            labelCancion.innerHTML = cancionActual.dato.nombre
+            labelArtista.innerHTML = cancionActual.dato.artista
+        })
+        botonAnteriorMusic.addEventListener("click", () => {
+            cancionActual = cancionActual.prev
+            labelCancion.innerHTML = cancionActual.dato.nombre
+            labelArtista.innerHTML = cancionActual.dato.artista
+        })
+    }
+    mostrarPlaylistGrafica()
 }
 
-export function mostrarArtistas(){
+export function mostrarPlaylistGrafica() {
+    let dot = "digraph G {\n"
+    dot += "node[shape=record, style=\"filled\"];\n"
+    dot += usuarioActual.dato.playList.graficar()
+    dot += "rankdir=LR;\n}\n"
+
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
+    }
+    d3.select("#graficaPlaylistUser").graphviz().width(800).height(500).renderDot(dot)
+}
+
+export function mostrarArtistas() {
     hideUserMusicContent()
     hideUserPLaylistContent()
     hideUserFriendsContent()
@@ -390,7 +545,7 @@ export function mostrarArtistas(){
     showUserArtistasContent()
 }
 
-export function mostrarUsuarios(){
+export function mostrarUsuarios() {
     hideUserMusicContent()
     hideUserPLaylistContent()
     hideUserArtistasContent()
@@ -406,7 +561,7 @@ export function mostrarUsuarios(){
 
         let user = usuarios.obtenern(index)
         let icon = document.createElement("ion-icon")
-        icon.setAttribute("name","person-circle-outline")
+        icon.setAttribute("name", "person-circle-outline")
         let userIcon = document.createElement("span")
         userIcon.classList.add("text-9xl")
         userIcon.classList.add("mx-5")
@@ -430,13 +585,13 @@ export function mostrarUsuarios(){
         userBox.appendChild(userIcon)
         userBox.appendChild(userName)
 
-        if(usuarioActual.dato.friends.buscarUser(user.username) != null ){
-            if(usuarioActual.dato.bloqueados.buscarUser(user.username) == null){
+        if (usuarioActual.dato.friends.buscarUser(user.username) != null) {
+            if (usuarioActual.dato.bloqueados.buscarUser(user.username) == null) {
                 userBox.appendChild(botonBloquear)
             }
             friendsList.appendChild(userBox)
-        }else{
-            if(usuarioActual.dato.bloqueados.buscarUser(user.username) == null && usuarioActual.dato.username != user.username){
+        } else {
+            if (usuarioActual.dato.bloqueados.buscarUser(user.username) == null && usuarioActual.dato.username != user.username) {
                 userBox.appendChild(botonAgregar)
                 userBox.appendChild(botonBloquear)
                 usersList.appendChild(userBox)
@@ -447,21 +602,21 @@ export function mostrarUsuarios(){
     agregarAmigo()
 }
 
-export function agregarAmigo(){
+export function agregarAmigo() {
     let div1 = document.getElementById("friendsContent")
     let botonAgregar = div1.querySelectorAll("#agregarAmigoUser")
     let botonBloquear = div1.querySelectorAll("#bloquearUsuarioUser")
 
-    botonAgregar.forEach( boton =>{
-        boton.addEventListener("click", ()=>{
+    botonAgregar.forEach(boton => {
+        boton.addEventListener("click", () => {
             let user = usuarios.buscarUser2(boton.getAttribute("name"))
             usuarioActual.dato.friends.push(user.dato)
             mostrarUsuarios()
         })
     })
 
-    botonBloquear.forEach( boton =>{
-        boton.addEventListener("click", ()=>{
+    botonBloquear.forEach(boton => {
+        boton.addEventListener("click", () => {
             let user = usuarios.buscarUser2(boton.getAttribute("name"))
             usuarioActual.dato.bloqueados.enqueue(user.dato)
             mostrarUsuarios()
@@ -469,25 +624,25 @@ export function agregarAmigo(){
     })
 }
 
-export function eliminarAmigo(){
+export function eliminarAmigo() {
     usuarioActual.dato.friends.pop()
     mostrarUsuarios()
 }
 
-export function mostrarAmigosGrafica(){
+export function mostrarAmigosGrafica() {
     let dot = "digraph G {\n"
     dot += "node[shape=record, style=\"filled\"];\n"
     dot += usuarioActual.dato.friends.graficar()
     dot += "}\n"
 
-    if(document.querySelector("svg")){
-        document.querySelector("svg").setAttribute("class","hidden")
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
     }
 
     d3.select("#graficaAmigos").graphviz().width(500).height(500).renderDot(dot)
 }
 
-export function mostrarBloqueados(){
+export function mostrarBloqueados() {
     hideUserMusicContent()
     hideUserPLaylistContent()
     hideUserArtistasContent()
@@ -503,7 +658,7 @@ export function mostrarBloqueados(){
         let user = usuarioActual.dato.bloqueados.obtenern(index)
 
         let icon = document.createElement("ion-icon")
-        icon.setAttribute("name","person-circle-outline")
+        icon.setAttribute("name", "person-circle-outline")
 
         let userIcon = document.createElement("span")
         userIcon.classList.add("text-9xl")
@@ -524,29 +679,47 @@ export function mostrarBloqueados(){
     mostrarBloqueadosGrafica()
 }
 
-export function desbloquearUser(){
+export function desbloquearUser() {
     usuarioActual.dato.bloqueados.dequeue()
     mostrarBloqueados()
 }
 
-export function mostrarBloqueadosGrafica(){
+export function mostrarBloqueadosGrafica() {
     let dot = "digraph G {\n"
     dot += "node[shape=record, style=\"filled\"];\n"
     dot += usuarioActual.dato.bloqueados.graficar()
     dot += "rankdir=LR;\n}\n"
 
-    if(document.querySelector("svg")){
-        document.querySelector("svg").setAttribute("class","hidden")
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
     }
 
     d3.select("#graficaBloqueados").graphviz().width(800).height(500).renderDot(dot)
 }
 
-export function mostrarPodcast(){
+export function mostrarPodcast() {
     hideUserMusicContent()
     hideUserPLaylistContent()
     hideUserArtistasContent()
     hideUserFriendsContent()
     hideBloqueadosContent()
     showUserPodcastContent()
+
+    graficarPodcastUser()
+}
+
+export function graficarPodcastUser(){
+    let dot = "digraph G {\n"
+    dot += "node[shape=record, style=\"filled\"];\n"
+    dot += podcasts.graficar()
+    dot += "}\n"
+
+    if (document.getElementById("imgAdmin")) {
+        document.getElementById("imgAdmin").remove()
+    }
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
+    }
+
+    d3.select("#graficaPodcastsUser").graphviz().width(500).height(500).renderDot(dot)
 }

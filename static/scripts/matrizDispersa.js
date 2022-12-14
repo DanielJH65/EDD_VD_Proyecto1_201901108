@@ -52,6 +52,24 @@ export class MatrizDispersa{
         this.rowsList = new Header();
     }
 
+    obtener(x, y){
+
+        let columna = this.colsList.getHeader(y);
+        let row = this.rowsList.getHeader(x);
+
+        if(columna != null && row != null){
+            let aux = columna.access
+
+            while(aux != null){
+                if(aux.x == x && aux.y == y){
+                    return aux.dato
+                }
+                aux = aux.down
+            }
+        }
+        return null
+    }
+
     insertar(x, y, dato) {
         let cell = new NodoMatrizDispersa(x, y, dato);
 
@@ -63,7 +81,7 @@ export class MatrizDispersa{
 
             while(aux != null){
                 if(aux.x == x && aux.y == y){
-                    return
+                    aux.dato = dato
                 }
                 aux = aux.down
             }

@@ -1,7 +1,7 @@
 import { NodoDoble } from "./nodoDoble.js"
 
-export class ListaCircularDoble{
-    constructor(){
+export class ListaCircularDoble {
+    constructor() {
         this.first = null
         this.tail = null
     }
@@ -49,5 +49,22 @@ export class ListaCircularDoble{
             }
             console.log(tmp.dato)
         }
+    }
+
+    graficar() {
+        let dot = ""
+        if (this.first != null) {
+            let tmp = this.first
+            while (tmp != this.tail) {
+                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}[label="${tmp.dato.nombre}"];\n`
+                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.next.dato.nombre.replaceAll(' ', '')};\n`
+                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.prev.dato.nombre.replaceAll(' ', '')};\n`
+                tmp = tmp.next
+            }
+            dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}[label="${tmp.dato.nombre}"];\n`
+            dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.next.dato.nombre.replaceAll(' ', '')};\n`
+            dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.prev.dato.nombre.replaceAll(' ', '')};\n`
+        }
+        return dot
     }
 }

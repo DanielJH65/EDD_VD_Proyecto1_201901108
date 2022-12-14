@@ -1,5 +1,6 @@
 import { Pila } from "./pila.js"
 import { Cola } from "./cola.js"
+import { ListaCircularDoble } from "./listaCircularDoble.js"
 export class Usuario {
     constructor(_dpi, _name, _username, _password, _phone, _admin) {
         this.dpi = _dpi
@@ -10,6 +11,7 @@ export class Usuario {
         this.admin = _admin
         this.friends = new Pila()
         this.bloqueados = new Cola()
+        this.playList = new ListaCircularDoble()
     }
 }
 

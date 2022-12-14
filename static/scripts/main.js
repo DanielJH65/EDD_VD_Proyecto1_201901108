@@ -1,4 +1,4 @@
-import { hideAdmin, hideLogin, hideSignin, login, showLogin, showSignin, signin, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, logOutUSer, mostrarBloqueados, mostrarMusica, mostrarPlaylist, mostrarArtistas, mostrarPodcast, eliminarAmigo, desbloquearUser } from "./funciones.js"
+import { hideAdmin, hideLogin, hideSignin, login, showLogin, showSignin, signin, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, logOutUSer, mostrarBloqueados, mostrarMusica, mostrarPlaylist, mostrarArtistas, mostrarPodcast, eliminarAmigo, desbloquearUser, capturarFecha, publicarCancion, agregarCancionAPlayslist } from "./funciones.js"
 
 //Log in
 
@@ -63,6 +63,9 @@ const bloqueadosUser = document.getElementById("bloqueadosUser")
 const podcastUser = document.getElementById("podcastUser")
 const eliminarAmigos = document.getElementById("eliminarAmigoFriends")
 const desbloquearUsers = document.getElementById("desbloquearUserFriends")
+const fechaProgramadaMusicCalendar = document.getElementById("fechaProgramadaMusicCalendar")
+const publicaCancionMusic = document.getElementById("publicaCancionMusic")
+const agregarPlaylistMusic = document.getElementById("agregarPlaylistMusic")
 
 logOutUser.addEventListener("click", ()=>{logOutUSer()})
 musicUser.addEventListener("click", ()=>{mostrarMusica()})
@@ -73,3 +76,6 @@ bloqueadosUser.addEventListener("click", ()=>{mostrarBloqueados()})
 podcastUser.addEventListener("click", ()=>{mostrarPodcast()})
 eliminarAmigos.addEventListener("click", ()=>{eliminarAmigo()})
 desbloquearUsers.addEventListener("click", ()=>{desbloquearUser()})
+fechaProgramadaMusicCalendar.addEventListener("change", ()=>{capturarFecha()})
+publicaCancionMusic.addEventListener("click", ()=>{publicarCancion()})
+agregarPlaylistMusic.addEventListener("click", ()=>{agregarCancionAPlayslist()})

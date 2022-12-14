@@ -72,7 +72,8 @@
                         placeholder="Username" required>
                     <input class="p-5 mt-2 rounded-xl border" type="text" name="name" id="namesignin"
                         placeholder="Nombre Completo" required>
-                    <input class="p-5 mt-2 rounded-xl border" type="text" name="dpi" id="dpisignin" placeholder="DPI" required>
+                    <input class="p-5 mt-2 rounded-xl border" type="text" name="dpi" id="dpisignin" placeholder="DPI"
+                        required>
                     <input class="p-5 mt-2 rounded-xl border" type="text" name="tel" id="telsignin"
                         placeholder="Teléfono" required>
                     <input class="p-5 mt-2 rounded-xl border" type="password" name="password" id="passwordsignin"
@@ -125,7 +126,8 @@
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="cancionesAdmin">Canciones</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
-                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="programadaAdmin">Musica Programada</a>
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="programadaAdmin">Musica
+                        Programada</a>
                 </li>
                 <li class="mx-5 my-6 md:my-0">
                     <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="podcastAdmin">Podcast</a>
@@ -218,42 +220,99 @@
 
         <!-- #UserContent -->
         <section class="bg-gray-800 flex items-center justify-center py-6">
-            
+
             <!-- #UserMusicContent -->
             <div class="bg-gray-400 hidden flex-col items-center justify-center px-12" id="musicContent">
                 <h2 class="font-bold text-2xl text-gray-900 py-6 my-5">Canciones Cargadas</h2>
                 <!-- #MusicList -->
-                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl" id="usersMusicActual">
+                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
+                    id="usersMusicActual">
                     <span class="text-3xl py-3">Reproductor de Música</span>
-                    <img class="rounded-2xl w-72 h-72" src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg" alt="Fondo Reproductor">
+                    <button class="bg-purple-400 rounded-3xl py-3 w-full" id="agregarPlaylistMusic" name="-1">Agregar a la playlist</button>
+                    <img class="rounded-2xl w-72 h-72"
+                        src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+                        alt="Fondo Reproductor">
                     <span class="text-xl py-3" id="nombreCancionMusic">Nombre de la Cancion</span>
                     <span class="text-xl py-3" id="artistaCancionMusic">Artista</span>
-                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2" style="background-color: #f3f4f6;">
+                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
+                        style="background-color: #f3f4f6;">
                     <div class="grid grid-cols-3 gap-6 p-0 m-0">
-                        <span class="text-4xl cursor-pointer"><ion-icon name="play-back-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer" id="anteriorCancionMusic"><ion-icon
+                                name="play-back-circle-outline"></ion-icon></span>
                         <span class="text-4xl cursor-pointer"><ion-icon name="play-circle-outline"></ion-icon></span>
-                        <span class="text-4xl cursor-pointer"><ion-icon name="play-forward-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer" id="nextCancionMusic"><ion-icon
+                                name="play-forward-circle-outline"></ion-icon></span>
                     </div>
                 </div>
                 <!-- #endMusicList -->
-
+                <h2 class="font-bold text-2xl text-gray-900 py-6 my-5">Canciones Programadas</h2>
+                <!-- #MusicCalendar -->
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="my-12 flex items-center justify-center">
+                        <input type="date" class="py-6 px-3 border rounded-2xl w-full" id="fechaProgramadaMusicCalendar" min="2022-01-01" max="2022-12-31">
+                    </div>
+                    <div class="col-span-2">
+                        <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
+                            id="usersMusicCalendar">
+                            <span class="text-3xl py-3">Reproductor de Música</span>
+                            <img class="rounded-2xl w-72 h-72"
+                                src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+                                alt="Fondo Reproductor">
+                            <span class="text-xl py-3" id="nombreCancionMusicCalendar">Nombre de la Cancion</span>
+                            <span class="text-xl py-3" id="artistaCancionMusicCalendar">Artista</span>
+                            <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
+                                style="background-color: #f3f4f6;">
+                            <div class="grid grid-cols-3 gap-6 p-0 m-0">
+                                <span class="text-4xl cursor-pointer" id="anteriorCancionMusicCalendar"><ion-icon
+                                        name="play-back-circle-outline"></ion-icon></span>
+                                <span class="text-4xl cursor-pointer"><ion-icon
+                                        name="play-circle-outline"></ion-icon></span>
+                                <span class="text-4xl cursor-pointer" id="nextCancionMusicCalendar"><ion-icon
+                                        name="play-forward-circle-outline"></ion-icon></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-12 flex flex-col justify-center text-gray-800">
+                        <span class="text-bold text-3xl">Detalles</span>
+                        <span class="text-2xl" id="nombreCancionMusicCalendar2">Nombre</span>
+                        <span class="text-2xl" id="artistaCancionMusicCalendar2">Artista</span>
+                        <span class="text-2xl" id="lanzamientoCancionMusicCalendar2">Lanzamiento</span>
+                    </div>
+                </div>
+                <!-- #endMusicCalendar -->
+                <h2 class="font-bold text-2xl text-gray-900 py-6 my-5">Publicar Cancion Nueva</h2>
+                <button class="bg-purple-800 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                    id="publicaCancionMusic">Publicar</button>
             </div>
             <!-- #endUserMusicContent -->
 
             <!-- #UserPLaylistContent -->
             <div class="bg-gray-400 hidden items-center justify-center" id="playlistContent">
-                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
-                <!-- #UsersList -->
-                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
-                <!-- #endUsersList -->
-                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
-                <!-- #FriendsList -->
-                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
-                <!-- #endFriendsList -->
-                <!-- #GraficaAmigos -->
-                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
-                <div id="" class="mx-5 my-5"></div>
-                <!-- #endGraficaAmigos -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Playlist</h2>
+                <!-- #PlaylistList -->
+                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
+                    id="usersPLaylistActual">
+                    <span class="text-3xl py-3">Reproductor de Música</span>
+                    <img class="rounded-2xl w-72 h-72"
+                        src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+                        alt="Fondo Reproductor">
+                    <span class="text-xl py-3" id="nombreCancionPlaylist">Nombre de la Cancion</span>
+                    <span class="text-xl py-3" id="artistaCancionPlaylist">Artista</span>
+                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
+                        style="background-color: #f3f4f6;">
+                    <div class="grid grid-cols-3 gap-6 p-0 m-0">
+                        <span class="text-4xl cursor-pointer" id="anteriorCancionPlaylist"><ion-icon
+                                name="play-back-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer"><ion-icon name="play-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer" id="nextCancionPlaylist"><ion-icon
+                                name="play-forward-circle-outline"></ion-icon></span>
+                    </div>
+                </div>
+                <!-- #endPlaylistList -->
+                <!-- #GraficaPlaylist -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica de Playlist</h2>
+                <div class="mx-5 my-5" id="graficaPlaylistUser"></div>
+                <!-- #endGraficaPLaylist -->
 
             </div>
             <!-- #endUserPLaylistContent -->
@@ -262,11 +321,11 @@
             <div class="bg-gray-400 hidden items-center justify-center" id="artistasContent">
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
                 <!-- #UsersList -->
-                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
+                <div class="grid grid-cols-8 gap-4" id=""></div>
                 <!-- #endUsersList -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
                 <!-- #FriendsList -->
-                <div class="grid grid-cols-8 gap-4 space-y-4" id=""></div>
+                <div class="grid grid-cols-8 gap-4" id=""></div>
                 <!-- #endFriendsList -->
                 <!-- #GraficaAmigos -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
@@ -285,13 +344,14 @@
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
                 <!-- #FriendsList -->
                 <div class="grid grid-cols-8 gap-4" id="friendsListFriends"></div>
-                <button class="bg-red-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl" id ="eliminarAmigoFriends">Eliminar</button>
+                <button class="bg-red-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                    id="eliminarAmigoFriends">Eliminar</button>
                 <!-- #endFriendsList -->
                 <!-- #GraficaAmigos -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
                 <div id="graficaAmigos" class="mx-5 my-5"></div>
                 <!-- #endGraficaAmigos -->
-                
+
             </div>
             <!-- #endUserFriendsContent -->
 
@@ -300,33 +360,50 @@
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Bloqueados</h2>
                 <!-- #BloqueadosList -->
                 <div class="grid grid-cols-8 gap-4" id="bloqueadosListBloqueados"></div>
-                <button class="bg-green-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl" id ="desbloquearUserFriends">Desbloquear</button>
+                <button class="bg-green-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                    id="desbloquearUserFriends">Desbloquear</button>
                 <!-- #endBloqueadosList -->
                 <!-- #GraficaBloqueados -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Grafica Cola de bloqueados</h2>
                 <div id="graficaBloqueados" class="mx-5 my-5"></div>
                 <!-- #endGraficaBloqueados -->
-                
+
             </div>
             <!-- #endUserBloqueadosContent -->
 
             <!-- #UserPodcastContent -->
             <div class="bg-gray-400 hidden items-center justify-center" id="podcastContent">
-                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
-                <!-- #UsersList -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Podcasts</h2>
+                <!-- #PodcastList -->
+                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
+                    id="usersPodcastActual">
+                    <span class="text-3xl py-3">Reproductor de Música</span>
+                    <img class="rounded-2xl w-72 h-72"
+                        src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+                        alt="Fondo Reproductor">
+                    <span class="text-xl py-3" id="nombreCancionPodcast">Nombre del Podcast</span>
+                    <span class="text-xl py-3" id="topicCancionPodcast">Topic</span>
+                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
+                        style="background-color: #f3f4f6;">
+                    <div class="grid grid-cols-3 gap-6 p-0 m-0">
+                        <span class="text-4xl cursor-pointer" id="anteriorCancionPodcast"><ion-icon
+                                name="play-back-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer"><ion-icon name="play-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer" id="nextCancionPodcast"><ion-icon
+                                name="play-forward-circle-outline"></ion-icon></span>
+                    </div>
+                </div>
+                <!-- #endPodcastList -->
+                <!-- #FormPodcastList -->
                 <div class="grid grid-cols-8 gap-4" id=""></div>
-                <!-- #endUsersList -->
-                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
-                <!-- #FriendsList -->
-                <div class="grid grid-cols-8 gap-4" id=""></div>
-                <!-- #endFriendsList -->
-                <!-- #GraficaAmigos -->
-                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
-                <div id="" class="mx-5 my-5"></div>
-                <!-- #endGraficaAmigos -->
+                <!-- #endFormPodcastList -->
+                <!-- #GraficaPodcast -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica de Podcasts</h2>
+                <div class="mx-5 my-5" id="graficaPodcastsUser"></div>
+                <!-- #endGraficaPodcast -->
 
             </div>
-            <!-- #endUserPodcastContent --> 
+            <!-- #endUserPodcastContent -->
 
         </section>
         <!-- #end UserContent -->

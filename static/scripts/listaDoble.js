@@ -22,6 +22,14 @@ export class ListaDoble{
 
     insertarFinal(_dato){
         let newNodo = new NodoDoble(_dato)
+        let temp = this.first
+        
+        while(temp != null){
+            if(temp.dato.nombre == _dato.nombre){
+                return
+            }
+            temp = temp.next
+        }
 
         if(this.first == null){
             this.first = newNodo
