@@ -102,7 +102,7 @@ export function hideUSerPodcastContent() {
 // Estructuras
 
 export const usuarios = new ListaSimple()
-export const artistasCanciones = new ListaListas()
+export let artistasCanciones = new ListaListas()
 export const podcasts = new ArbolBB()
 export const programada = new MatrizDispersa()
 
@@ -549,15 +549,210 @@ export function mostrarArtistas() {
     mostrarGraficaAmigosCanciones()
 }
 
-export function mostrarArtistasCanciones(){
-    
+export function mostrarArtistasCanciones() {
+    const artistasCancionesListArtistas = document.getElementById("artistasCancionesListArtistas")
+    artistasCancionesListArtistas.innerHTML = ""
+
+    for (let index = 0; index < artistasCanciones.sizeArtistas(); index++) {
+        let artistaActual = artistasCanciones.obtenernArtista(index).dato
+
+        let divContenedorPodcast = document.createElement("div")
+        divContenedorPodcast.setAttribute("class", "bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-5 px-3 my-5 py-5 rounded-3xl")
+        divContenedorPodcast.setAttribute("id", "contenedorCanciones" + artistaActual.name.replaceAll(' ', ''))
+
+        let spanReproductor = document.createElement("span")
+        spanReproductor.setAttribute("class", "text-3xl py-3")
+        spanReproductor.innerHTML = "Reproductor de Música"
+
+        let imagenDisco = document.createElement("img")
+        imagenDisco.src = "https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+        imagenDisco.setAttribute("class", "rounded-2xl w-44 h-44")
+
+        let spanNombre = document.createElement("span")
+        spanNombre.setAttribute("class", "text-xl py-3")
+        if (artistasCanciones.obtenerArtista(artistaActual.name).lista.size() > 0) {
+            spanNombre.innerHTML = artistasCanciones.obtenerArtista(artistaActual.name).lista.obtenern(0).dato.nombre
+        } else {
+            spanNombre.innerHTML = "Canción"
+        }
+
+        let spanTopic = document.createElement("span")
+        spanTopic.setAttribute("class", "text-xl py-3")
+        spanTopic.innerHTML = artistaActual.name
+
+        let barra = document.createElement("input")
+        barra.type = "range"
+
+        let divBotones = document.createElement("div")
+        divBotones.setAttribute("class", "grid grid-cols-3 gap-6")
+
+        let spanAnterior = document.createElement("span")
+        spanAnterior.setAttribute("class", "text-4xl cursor-pointer")
+        spanAnterior.setAttribute("id", "anteriorArtistasUser")
+        spanAnterior.setAttribute("name", artistaActual.name)
+        spanAnterior.setAttribute("ind", "0")
+        spanAnterior.innerHTML = `<ion-icon name="play-back-circle-outline"></ion-icon>`
+
+        let spanPlay = document.createElement("span")
+        spanPlay.setAttribute("class", "text-4xl cursor-pointer")
+        spanPlay.innerHTML = `<ion-icon name="play-circle-outline"></ion-icon>`
+
+        let spanSiguiente = document.createElement("span")
+        spanSiguiente.setAttribute("class", "text-4xl cursor-pointer")
+        spanSiguiente.setAttribute("id", "siguienteArtistasUser")
+        spanSiguiente.setAttribute("name", artistaActual.name)
+        spanSiguiente.setAttribute("ind", "0")
+        spanSiguiente.innerHTML = `<ion-icon name="play-forward-circle-outline"></ion-icon>`
+
+        divBotones.appendChild(spanAnterior)
+        divBotones.appendChild(spanPlay)
+        divBotones.appendChild(spanSiguiente)
+
+        divContenedorPodcast.appendChild(spanReproductor)
+        divContenedorPodcast.appendChild(imagenDisco)
+        divContenedorPodcast.appendChild(spanNombre)
+        divContenedorPodcast.appendChild(spanTopic)
+        divContenedorPodcast.appendChild(barra)
+        divContenedorPodcast.appendChild(divBotones)
+
+        artistasCancionesListArtistas.appendChild(divContenedorPodcast)
+    }
+    listenerArtistas()
 }
 
-export function mostrarArtistasOrdenar(){
-    
+export function listenerArtistas() {
+    const botonSiguiente = document.querySelectorAll('#siguienteArtistasUser')
+    const botonAnterior = document.querySelectorAll('#anteriorArtistasUser')
+
+    botonSiguiente.forEach(element => {
+        element.addEventListener("click", () => {
+            let ind = parseInt(element.getAttribute("ind"))
+            let artistaActual = artistasCanciones.obtenerArtista(element.getAttribute("name"))
+            let contenedor = document.getElementById("contenedorCanciones" + artistaActual.dato.name.replaceAll(' ', ''))
+            let spanCanciones = contenedor.querySelectorAll("span")[1]
+            let spanboton = contenedor.querySelector("#siguienteArtistasUser")
+            let spanboton2 = contenedor.querySelector("#anteriorArtistasUser")
+            if (ind < artistaActual.lista.size() - 1) {
+                ind++
+                spanboton.setAttribute("ind", ind)
+                spanboton2.setAttribute("ind", ind)
+                spanCanciones.innerHTML = ""
+                spanCanciones.innerHTML = artistaActual.lista.obtenern(ind).dato.nombre
+            }
+        })
+    })
+
+    botonAnterior.forEach(element => {
+        element.addEventListener("click", () => {
+            let ind = parseInt(element.getAttribute("ind"))
+            let artistaActual = artistasCanciones.obtenerArtista(element.getAttribute("name"))
+            let contenedor = document.getElementById("contenedorCanciones" + artistaActual.dato.name.replaceAll(' ', ''))
+            let spanCanciones = contenedor.querySelectorAll("span")[1]
+            let spanboton = contenedor.querySelector("#siguienteArtistasUser")
+            let spanboton2 = contenedor.querySelector("#anteriorArtistasUser")
+            if (ind > 0) {
+                ind--
+                spanboton.setAttribute("ind", ind)
+                spanboton2.setAttribute("ind", ind)
+                spanCanciones.innerHTML = ""
+                spanCanciones.innerHTML = artistaActual.lista.obtenern(ind).dato.nombre
+            }
+        })
+    })
 }
 
-export function mostrarGraficaAmigosCanciones(){
+export function mostrarArtistasOrdenar() {
+    const artistList = document.getElementById("artistasListArtistas")
+    artistList.innerHTML = ""
+    for (let index = 0; index < artistasCanciones.sizeArtistas(); index++) {
+        let user = artistasCanciones.obtenernArtista(index).dato
+
+        let icon = document.createElement("ion-icon")
+        icon.setAttribute("name", "person-circle-outline")
+
+        let userIcon = document.createElement("span")
+        userIcon.classList.add("text-9xl")
+        userIcon.classList.add("mx-5")
+        userIcon.appendChild(icon)
+
+        let userName = document.createElement("p")
+        userName.setAttribute("class", "text-xl font-bold text-gray-800 mx-5")
+        userName.innerHTML = user.name
+
+        let userBox = document.createElement("div")
+        userBox.setAttribute("class", "flex flex-col")
+        userBox.appendChild(userIcon)
+        userBox.appendChild(userName)
+
+        artistList.appendChild(userBox)
+    }
+}
+
+export function botonOrdenarAsc() {
+    artistasCanciones = ordenamientoBurbuja(artistasCanciones)
+    mostrarArtistas()
+}
+
+export function ordenamientoBurbuja(lista) {
+    let temp1 = lista.first
+    let auxArt
+    let auxLista
+
+    while (temp1.next != null) {
+        let temp2 = temp1.next
+        while (temp2 != null) {
+            if (temp1.dato.name > temp2.dato.name) {
+                auxArt = temp1.dato
+                auxLista = temp1.lista
+                temp1.dato = temp2.dato
+                temp1.lista = temp2.lista
+                temp2.dato = auxArt
+                temp2.lista = auxLista
+            }
+            temp2 = temp2.next
+        }
+        temp1 = temp1.next
+    }
+    return lista
+}
+
+export function ordenamientoQuickSort() {
+    quickSort(artistasCanciones, 0, artistasCanciones.sizeArtistas() - 1)
+    mostrarArtistas()
+}
+
+function quickSort(lista, first, last) {
+    if (first < last) {
+        let part = partition(lista, first, last)
+
+        quickSort(lista, first, part - 1)
+        quickSort(lista, part + 1, last)
+    }
+}
+
+function partition(lista, first, last) {
+    let pivote = lista.obtenernArtista(last).dato.name
+    let i = (first - 1)
+    for (let j = first; j <= last -1; j++) {
+        if (lista.obtenernArtista(j).dato.name > pivote) {
+            i++
+            swap(lista, i, j)
+        }
+    }
+    swap(lista, i + 1, last)
+    return (i + 1)
+}
+
+function swap(lista, i, j) {
+    let auxArt = lista.obtenernArtista(i).dato
+    let auxLista = lista.obtenernArtista(i).lista
+    lista.obtenernArtista(i).dato = lista.obtenernArtista(j).dato
+    lista.obtenernArtista(i).lista = lista.obtenernArtista(j).lista
+    lista.obtenernArtista(j).dato = auxArt
+    lista.obtenernArtista(j).lista = auxLista
+}
+
+export function mostrarGraficaAmigosCanciones() {
     let dot = "digraph G {\n"
     dot += "node[shape=component, style=\"filled\", color=\"gray\"];\n"
     dot += artistasCanciones.graficar()
@@ -736,10 +931,10 @@ export function mostrarPodcast() {
     graficarPodcastUser()
 }
 
-export function recorrerPodcasts(root, lista){
-    if(root != null){
+export function recorrerPodcasts(root, lista) {
+    if (root != null) {
         recorrerPodcasts(root.left, lista)
-        
+
         let divContenedorPodcast = document.createElement("div")
         divContenedorPodcast.setAttribute("class", "bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-5 px-3 my-5 py-5 rounded-3xl")
 
@@ -773,7 +968,7 @@ export function recorrerPodcasts(root, lista){
     }
 }
 
-export function agregarPodcast(){
+export function agregarPodcast() {
     Swal.fire({
         title: 'Publicar nuevo Podcast',
         html: `<input type="text" id="nombre" class="swal2-input" placeholder="Nombre">
@@ -798,7 +993,7 @@ export function agregarPodcast(){
     })
 }
 
-export function graficarPodcastUser(){
+export function graficarPodcastUser() {
     let dot = "digraph G {\n"
     dot += "node[shape=record, style=\"filled\"];\n"
     dot += podcasts.graficar()

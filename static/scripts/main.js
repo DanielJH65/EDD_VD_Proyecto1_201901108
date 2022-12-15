@@ -1,4 +1,4 @@
-import { hideAdmin, hideLogin, hideSignin, login, showLogin, showSignin, signin, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, logOutUSer, mostrarBloqueados, mostrarMusica, mostrarPlaylist, mostrarArtistas, mostrarPodcast, eliminarAmigo, desbloquearUser, capturarFecha, publicarCancion, agregarCancionAPlayslist, agregarPodcast } from "./funciones.js"
+import { hideAdmin, hideLogin, hideSignin, login, showLogin, showSignin, signin, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, logOutUSer, mostrarBloqueados, mostrarMusica, mostrarPlaylist, mostrarArtistas, mostrarPodcast, eliminarAmigo, desbloquearUser, capturarFecha, publicarCancion, agregarCancionAPlayslist, agregarPodcast, ordenamientoBurbuja, botonOrdenarAsc, ordenamientoQuickSort } from "./funciones.js"
 
 //Log in
 
@@ -83,5 +83,5 @@ fechaProgramadaMusicCalendar.addEventListener("change", ()=>{capturarFecha()})
 publicaCancionMusic.addEventListener("click", ()=>{publicarCancion()})
 agregarPlaylistMusic.addEventListener("click", ()=>{agregarCancionAPlayslist()})
 publicarPodcastPodcasts.addEventListener("click", ()=>{agregarPodcast()})
-ordenarArtistasAscendente.addEventListener("click", ()=>{})
-ordenarArtistasDescendente.addEventListener("click", ()=>{})
+ordenarArtistasAscendente.addEventListener("click", ()=>{botonOrdenarAsc()})
+ordenarArtistasDescendente.addEventListener("click", ()=>{ordenamientoQuickSort()})

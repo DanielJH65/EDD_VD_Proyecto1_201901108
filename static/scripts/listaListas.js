@@ -109,10 +109,46 @@ export class ListaListas{
         return size2
     }
 
+    sizeArtistas(){
+        let size2 = 0
+        let temp = this.first
+        while(temp != null){
+            size2++
+            temp = temp.next
+        }
+        return size2
+    }
+
     obtenerArtista(nombre){
         let temp = this.first
         while(temp != null){
             if(temp.dato.name == nombre) return temp
+            temp = temp.next
+        }
+        return null
+    }
+
+    obtenernArtista(_n){
+        let contador = 0
+        let temp = this.first
+        while(temp != null){
+            if(contador == _n){
+                return temp
+            }
+            contador++
+            temp = temp.next
+        }
+        return null
+    }
+
+    setnArtista(_n, nodo){
+        let contador = 0
+        let temp = this.first
+        while(temp != null){
+            if(contador == _n){
+                temp = nodo
+            }
+            contador++
             temp = temp.next
         }
         return null
@@ -133,5 +169,13 @@ export class ListaListas{
             temp = temp.next
         }
         return null
+    }
+
+    imprimir(){
+        let tmp = this.first
+        while(tmp != null){
+            console.log(tmp.dato)
+            tmp = tmp.next
+        }
     }
 }

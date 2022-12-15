@@ -41,4 +41,26 @@ export class ListaDoble{
         }
     }
 
+    size(){
+        let contador = 0
+        let temp = this.first
+        while(temp != null){
+            contador++
+            temp = temp.next
+        }
+        return contador
+    }
+    
+    obtenern(_n){
+        let contador = 0
+        let temp = this.first
+        while(temp != null){
+            if(contador == _n){
+                return temp
+            }
+            contador++
+            temp = temp.next
+        }
+        return null
+    }
 }
