@@ -319,17 +319,23 @@
 
             <!-- #UserArtistasContent -->
             <div class="bg-gray-400 hidden items-center justify-center" id="artistasContent">
-                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Canciones por Artista</h2>
                 <!-- #UsersList -->
-                <div class="grid grid-cols-8 gap-4" id=""></div>
+                <div class="grid grid-cols-8 gap-4" id="artistasCancionesListArtistas"></div>
                 <!-- #endUsersList -->
-                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Listado de artistas</h2>
                 <!-- #FriendsList -->
-                <div class="grid grid-cols-8 gap-4" id=""></div>
+                <div class="grid grid-cols-8 gap-4" id="artistasListArtistas"></div>
+                <div class="grid grid-cols-2 gap-6">
+                    <button class="bg-orange-800 text-slate-100 text-4xl w-full py-5 my-5 mx-5 rounded-3xl"
+                    id="ordenarArtistasAscendente">Ascendete</button>
+                    <button class="bg-lime-800 text-slate-100 text-4xl w-full py-5 my-5 mx-5 rounded-3xl"
+                    id="ordenarArtistasDescendente">Descendente</button>
+                </div>
                 <!-- #endFriendsList -->
                 <!-- #GraficaAmigos -->
-                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
-                <div id="" class="mx-5 my-5"></div>
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Lista de listas</h2>
+                <div id="graficaArtistasUser" class="mx-5 my-5"></div>
                 <!-- #endGraficaAmigos -->
 
             </div>
@@ -375,27 +381,13 @@
             <div class="bg-gray-400 hidden items-center justify-center" id="podcastContent">
                 <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Podcasts</h2>
                 <!-- #PodcastList -->
-                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
-                    id="usersPodcastActual">
-                    <span class="text-3xl py-3">Reproductor de Música</span>
-                    <img class="rounded-2xl w-72 h-72"
-                        src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
-                        alt="Fondo Reproductor">
-                    <span class="text-xl py-3" id="nombreCancionPodcast">Nombre del Podcast</span>
-                    <span class="text-xl py-3" id="topicCancionPodcast">Topic</span>
-                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
-                        style="background-color: #f3f4f6;">
-                    <div class="grid grid-cols-3 gap-6 p-0 m-0">
-                        <span class="text-4xl cursor-pointer" id="anteriorCancionPodcast"><ion-icon
-                                name="play-back-circle-outline"></ion-icon></span>
-                        <span class="text-4xl cursor-pointer"><ion-icon name="play-circle-outline"></ion-icon></span>
-                        <span class="text-4xl cursor-pointer" id="nextCancionPodcast"><ion-icon
-                                name="play-forward-circle-outline"></ion-icon></span>
-                    </div>
-                </div>
+                <div class="grid grid-cols-6 gap-4" id="podcastListUser"></div>
                 <!-- #endPodcastList -->
                 <!-- #FormPodcastList -->
-                <div class="grid grid-cols-8 gap-4" id=""></div>
+                <div class="flex flex-col px-12">
+                    <button class="bg-purple-800 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                    id="publicarPodcastPodcasts">Publicar Podcast</button>
+                </div>
                 <!-- #endFormPodcastList -->
                 <!-- #GraficaPodcast -->
                 <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica de Podcasts</h2>

@@ -1,4 +1,4 @@
-import { hideAdmin, hideLogin, hideSignin, login, showLogin, showSignin, signin, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, logOutUSer, mostrarBloqueados, mostrarMusica, mostrarPlaylist, mostrarArtistas, mostrarPodcast, eliminarAmigo, desbloquearUser, capturarFecha, publicarCancion, agregarCancionAPlayslist } from "./funciones.js"
+import { hideAdmin, hideLogin, hideSignin, login, showLogin, showSignin, signin, ingresarUsuarios, graficarUsuarios, ingresarArtistas, graficarArtistasCanciones, ingresarCanciones, mostrarUsuarios, graficarPodcast, ingresarPodcast, ingresarProgramadas, graficarProgramadas, logOutUSer, mostrarBloqueados, mostrarMusica, mostrarPlaylist, mostrarArtistas, mostrarPodcast, eliminarAmigo, desbloquearUser, capturarFecha, publicarCancion, agregarCancionAPlayslist, agregarPodcast } from "./funciones.js"
 
 //Log in
 
@@ -66,6 +66,9 @@ const desbloquearUsers = document.getElementById("desbloquearUserFriends")
 const fechaProgramadaMusicCalendar = document.getElementById("fechaProgramadaMusicCalendar")
 const publicaCancionMusic = document.getElementById("publicaCancionMusic")
 const agregarPlaylistMusic = document.getElementById("agregarPlaylistMusic")
+const publicarPodcastPodcasts = document.getElementById("publicarPodcastPodcasts")
+const ordenarArtistasAscendente = document.getElementById("ordenarArtistasAscendente")
+const ordenarArtistasDescendente = document.getElementById("ordenarArtistasDescendente")
 
 logOutUser.addEventListener("click", ()=>{logOutUSer()})
 musicUser.addEventListener("click", ()=>{mostrarMusica()})
@@ -79,3 +82,6 @@ desbloquearUsers.addEventListener("click", ()=>{desbloquearUser()})
 fechaProgramadaMusicCalendar.addEventListener("change", ()=>{capturarFecha()})
 publicaCancionMusic.addEventListener("click", ()=>{publicarCancion()})
 agregarPlaylistMusic.addEventListener("click", ()=>{agregarCancionAPlayslist()})
+publicarPodcastPodcasts.addEventListener("click", ()=>{agregarPodcast()})
+ordenarArtistasAscendente.addEventListener("click", ()=>{})
+ordenarArtistasDescendente.addEventListener("click", ()=>{})

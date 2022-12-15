@@ -543,6 +543,30 @@ export function mostrarArtistas() {
     hideBloqueadosContent()
     hideUSerPodcastContent()
     showUserArtistasContent()
+
+    mostrarArtistasCanciones()
+    mostrarArtistasOrdenar()
+    mostrarGraficaAmigosCanciones()
+}
+
+export function mostrarArtistasCanciones(){
+    
+}
+
+export function mostrarArtistasOrdenar(){
+    
+}
+
+export function mostrarGraficaAmigosCanciones(){
+    let dot = "digraph G {\n"
+    dot += "node[shape=component, style=\"filled\", color=\"gray\"];\n"
+    dot += artistasCanciones.graficar()
+    dot += "}\n"
+
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
+    }
+    d3.select("#graficaArtistasUser").graphviz().width(800).height(500).renderDot(dot)
 }
 
 export function mostrarUsuarios() {
@@ -705,7 +729,73 @@ export function mostrarPodcast() {
     hideBloqueadosContent()
     showUserPodcastContent()
 
+    const podcastsListUser = document.getElementById("podcastListUser")
+    podcastsListUser.innerHTML = ""
+    recorrerPodcasts(podcasts.root, podcastsListUser)
+
     graficarPodcastUser()
+}
+
+export function recorrerPodcasts(root, lista){
+    if(root != null){
+        recorrerPodcasts(root.left, lista)
+        
+        let divContenedorPodcast = document.createElement("div")
+        divContenedorPodcast.setAttribute("class", "bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-5 px-3 my-5 py-5 rounded-3xl")
+
+        let spanReproductor = document.createElement("span")
+        spanReproductor.setAttribute("class", "text-3xl py-3")
+        spanReproductor.innerHTML = "Reproductor de Música"
+
+        let imagenDisco = document.createElement("img")
+        imagenDisco.src = "https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+        imagenDisco.setAttribute("class", "rounded-2xl w-44 h-44")
+
+        let spanNombre = document.createElement("span")
+        spanNombre.setAttribute("class", "text-xl py-3")
+        spanNombre.innerHTML = root.dato.name
+
+        let spanTopic = document.createElement("span")
+        spanTopic.setAttribute("class", "text-xl py-3")
+        spanTopic.innerHTML = root.dato.topic
+
+        let barra = document.createElement("input")
+        barra.type = "range"
+
+        divContenedorPodcast.appendChild(spanReproductor)
+        divContenedorPodcast.appendChild(imagenDisco)
+        divContenedorPodcast.appendChild(spanNombre)
+        divContenedorPodcast.appendChild(spanTopic)
+        divContenedorPodcast.appendChild(barra)
+        lista.appendChild(divContenedorPodcast)
+
+        recorrerPodcasts(root.right, lista)
+    }
+}
+
+export function agregarPodcast(){
+    Swal.fire({
+        title: 'Publicar nuevo Podcast',
+        html: `<input type="text" id="nombre" class="swal2-input" placeholder="Nombre">
+        <input type="text" id="topic" class="swal2-input" placeholder="Topic">
+        <input type="text" id="guests" class="swal2-input" placeholder="Guests (Separados por coma)">
+        <input type="text" id="duracion" class="swal2-input" placeholder="Duración">`,
+        confirmButtonText: 'Publicar',
+        focusConfirm: false,
+        preConfirm: () => {
+            const nombre = Swal.getPopup().querySelector('#nombre').value
+            const topic = Swal.getPopup().querySelector('#topic').value
+            const duracion = Swal.getPopup().querySelector('#duracion').value
+            const guests = Swal.getPopup().querySelector('#guests').value.split(",")
+            if (!nombre || !topic || !duracion) {
+                Swal.showValidationMessage(`Ingrese todos los campos`)
+            }
+            return { 'nombre': nombre, 'topic': topic, 'duracion': duracion, 'guests': guests }
+        }
+    }).then((result) => {
+        podcasts.insertar(new Podcast(result.value.nombre, result.value.topic, result.value.guests, result.value.duracion))
+        Swal.fire("Agregado...", "Podcast publicado", 'success')
+    })
 }
 
 export function graficarPodcastUser(){

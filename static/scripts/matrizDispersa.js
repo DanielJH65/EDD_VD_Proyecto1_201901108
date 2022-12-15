@@ -82,6 +82,7 @@ export class MatrizDispersa{
             while(aux != null){
                 if(aux.x == x && aux.y == y){
                     aux.dato = dato
+                    return
                 }
                 aux = aux.down
             }
