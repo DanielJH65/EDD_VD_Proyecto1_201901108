@@ -55,15 +55,17 @@ export class ListaCircularDoble {
         let dot = ""
         if (this.first != null) {
             let tmp = this.first
+            let i = 0
             while (tmp != this.tail) {
-                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}[label="${tmp.dato.nombre}"];\n`
-                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.next.dato.nombre.replaceAll(' ', '')};\n`
-                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.prev.dato.nombre.replaceAll(' ', '')};\n`
+                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}${tmp.dato.artista.replaceAll(' ', '')}[label="${tmp.dato.nombre}"];\n`
+                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}${tmp.dato.artista.replaceAll(' ', '')} -> Nodo${tmp.next.dato.nombre.replaceAll(' ', '')}${tmp.dato.next.artista.replaceAll(' ', '')};\n`
+                dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}${tmp.dato.artista.replaceAll(' ', '')} -> Nodo${tmp.prev.dato.nombre.replaceAll(' ', '')}${tmp.dato.prev.artista.replaceAll(' ', '')};\n`
                 tmp = tmp.next
+                i++
             }
             dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}[label="${tmp.dato.nombre}"];\n`
-            dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.next.dato.nombre.replaceAll(' ', '')};\n`
-            dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')} -> Nodo${tmp.prev.dato.nombre.replaceAll(' ', '')};\n`
+            dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}${tmp.dato.artista.replaceAll(' ', '')} -> Nodo${tmp.next.dato.nombre.replaceAll(' ', '')}${tmp.next.dato.artista.replaceAll(' ', '')};\n`
+            dot += `Nodo${tmp.dato.nombre.replaceAll(' ', '')}${tmp.dato.artista.replaceAll(' ', '')} -> Nodo${tmp.prev.dato.nombre.replaceAll(' ', '')}${tmp.prev.dato.artista.replaceAll(' ', '')};\n`
         }
         return dot
     }

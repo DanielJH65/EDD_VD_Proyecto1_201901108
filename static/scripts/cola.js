@@ -70,7 +70,7 @@ export class Cola{
         let tmp = this.first
         let dot = ""
         while(tmp != null){
-            dot += `Nodo${tmp.dato.username}[label = "${tmp.dato.username}"];\n`
+            dot += `Nodo${tmp.dato.username}[label = "${tmp.dato.dpi}\\n${tmp.dato.username}\\n${tmp.dato.name}\\n${tmp.dato.password}\\n${tmp.dato.phone}"];\n`
             if(tmp.next != null){
                 dot+= `Nodo${tmp.dato.username} -> Nodo${tmp.next.dato.username}\n`
                 dot+= `Nodo${tmp.next.dato.username} -> Nodo${tmp.dato.username}\n`
